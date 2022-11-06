@@ -41,8 +41,9 @@ export default function App() {
     const url = baseUrl + '/api/v1/user/login'
     const loginBody = {
       username: e.target.username.value,
-      password: e.target.password.value,
-      email: e.target.email.value
+      email: e.target.email.value,
+      password: e.target.password.value
+      
     }
     try {
 
@@ -77,8 +78,9 @@ export default function App() {
         method: 'POST',
         body: JSON.stringify({
           username: e.target.username.value,
-          password: e.target.password.value,
-          email: e.target.email.value
+          email: e.target.email.value,
+          password: e.target.password.value
+          
         }),
         headers: {
           'Content-Type': 'application/json'

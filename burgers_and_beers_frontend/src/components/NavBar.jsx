@@ -9,7 +9,7 @@ export default function NavBar() {
    
     return(
         <nav>
-          <Link to="/">HOME</Link>
+          <Link to="/">HOME</Link><br/>
           {/* NavLink comes with a bool called 'isActive'. True when clicked, false when not clicked */}
           <NavLink to="register" style={({isActive})=> isActive ? activeStyle : undefined }>REGISTER</NavLink>
           <br/>
