@@ -1,4 +1,5 @@
-import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
+import {Button, Card} from 'react-bootstrap'
 
 const PlacesContainer = (props) =>{
 

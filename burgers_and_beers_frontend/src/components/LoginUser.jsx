@@ -1,14 +1,30 @@
-export default function LoginUser(props) {
+import {Button, Form} from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+ 
+ function LoginUser(props) {
   return(
-    <form onSubmit={props.loginUser}>
-        <strong>Login </strong>
-        <label htmlFor="name">Username: </label>
-        <input type="text" id="name" name="username"/>
-        <label htmlFor="name">Email: </label>
-        <input type="text" id="email" name="email"/>
-        <label htmlFor="name">Password: </label>
-        <input type="text" id="password" name="password"/>
-        <input type="submit" value="login" />
-    </form>
+    <Form onSubmit={props.loginUser}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" name="email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" name="password"/>
+          </Form.Group>
+          
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+    </Form>
+
+    
   )
 }
+
+export default LoginUser

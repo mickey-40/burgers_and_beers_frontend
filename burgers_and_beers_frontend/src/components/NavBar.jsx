@@ -16,6 +16,9 @@ export default function NavBar() {
           <NavLink to="login" style={({isActive})=>isActive ? activeStyle : undefined }>LOGIN</NavLink>
           <br/>
           <NavLink to="places" style={({isActive})=>isActive ? activeStyle : undefined }>SEE ALL PLACES</NavLink>
+          <br/>
+          <NavLink to="logout" style={({isActive})=>isActive ? activeStyle : undefined }>LOGOUT</NavLink>
+          <br/>
         </nav>
     )
 }

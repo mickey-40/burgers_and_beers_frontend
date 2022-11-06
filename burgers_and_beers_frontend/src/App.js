@@ -40,7 +40,7 @@ export default function App() {
     e.preventDefault()
     const url = baseUrl + '/api/v1/user/login'
     const loginBody = {
-      username: e.target.username.value,
+      
       email: e.target.email.value,
       password: e.target.password.value
       
@@ -110,6 +110,7 @@ export default function App() {
         <Route path="/" element={<Home />}/>
         <Route path="register" element={<RegisterUser register={register} />}/>
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
+        <Route path="logout" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
         {/* not mandatory to put a "/" at the beginning of a route */}
         
