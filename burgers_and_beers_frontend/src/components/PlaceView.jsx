@@ -28,7 +28,7 @@ const PlaceView = (props) => {
 
       useEffect(()=>{
         getOnePlaceById(id)
-      })
+      },[])
 
     return(
         <>
