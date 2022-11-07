@@ -8,31 +8,26 @@ const PlacesContainer = (props) =>{
     return (
       <>
         <h2> Places List </h2>
-        <table>
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>comments</th>
-          </tr>
+        
             { props.places.map((place, i) => {
                 return (
-                  <tr key={place.id}>
-                    <td style={{textDecoration: "underline", color: "blue"}} onClick={()=>{navigate(`${place.id}`)}}>
-                    { place.name }
-                    </td>
-                    <td>
-                     { place.location }
-                    </td>
-                    <td>
-                     { place.comments }
-                    </td>
-                  </tr>
+                  <Card key={place.id} style={{ width: '18rem'}}>
+                    <Card.Img variant="top" src="place.image" />
+                    <Card.Body>
+                      <Card.Title>{ place.name }</Card.Title>
+                      <Card.Text>
+                        {place.location}
+                      </Card.Text>
+                      <Card.Text>
+                      { place.comments }
+                      </Card.Text>
+                      <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
+                    </Card.Body>
+                  </Card>
                 )
               })
             }
-          </tbody>
-        </table>
+          
       </>
     )
 }

@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" name="password"/>

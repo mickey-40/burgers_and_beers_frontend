@@ -6,6 +6,7 @@ import Home from './components/Home'
 import LoginUser from './components/LoginUser'
 import RegisterUser from './components/RegisterUser'
 import PlacesContainer from './components/PlacesContainer'
+import PlaceView from './components/PlaceView'
 
 let baseUrl = 'http://localhost:8000'
 
@@ -112,6 +113,7 @@ export default function App() {
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="logout" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
+        <Route path="/places/:id" element={<PlaceView />}/>
         {/* not mandatory to put a "/" at the beginning of a route */}
         
       </Routes>     
