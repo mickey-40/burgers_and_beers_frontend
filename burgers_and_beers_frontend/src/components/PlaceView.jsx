@@ -34,7 +34,12 @@ const PlaceView = (props) => {
         <>
             
             <h1>{place.name}</h1>
-            
+            <h2>{place.location}</h2>
+            <h2>{place.rating}</h2>
+            <h2>{place.likes}</h2>
+            <h2>{place.comments}</h2>
+            <h2>{place.imageURL}</h2>
+            <h2>{place.private}</h2>
         </>
     )
 }

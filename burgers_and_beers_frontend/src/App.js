@@ -7,6 +7,7 @@ import LoginUser from './components/LoginUser'
 import RegisterUser from './components/RegisterUser'
 import PlacesContainer from './components/PlacesContainer'
 import PlaceView from './components/PlaceView'
+import AddPlace from './components/AddPlace'
 
 let baseUrl = 'http://localhost:8000'
 
@@ -33,7 +34,19 @@ export default function App() {
       setPlaces(data.data)
     })
   }
-
+  const addPlace = (place) => {
+    const copyPlaces = [...this.places]
+    copyPlaces.unshift(place)
+    this.setPlaces({
+      name: '',
+      location: '',
+      rating: 0,
+      likes: 0,
+      comments:'',
+      imageURL:'',
+      private:false
+    })
+  }
 
   const loginUser = async (e) => {
     console.log('loginUser')
@@ -114,6 +127,7 @@ export default function App() {
         <Route path="logout" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
         <Route path="/places/:id" element={<PlaceView />}/>
+        <Route path="places/add" element={<AddPlace addplaces={addPlace} places={places}/>}/>
         {/* not mandatory to put a "/" at the beginning of a route */}
         
       </Routes>     
