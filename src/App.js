@@ -38,7 +38,7 @@ export default function App() {
   const addPlace = (place) => {
     const copyPlaces = [...this.places]
     copyPlaces.unshift(place)
-    this.setPlaces({
+    setPlaces({
       name: '',
       location: '',
       rating: '',
@@ -46,6 +46,10 @@ export default function App() {
       imageURL:'',
       private:''
     })
+    navigate('places')
+    
+    
+    
   }
 
   const loginUser = async (e) => {
@@ -113,6 +117,7 @@ export default function App() {
   }
  
   const logoutUser=async(e)=>{
+    console.log('logout user')
     e.preventDefault();
     const url = baseUrl +'/api/v1/user/logout'
     
@@ -127,7 +132,7 @@ export default function App() {
           return []
         }
       }).then(data => {
-        getPlaces()
+        setPlaces([])
         navigate("places")
         
       })
@@ -148,10 +153,10 @@ export default function App() {
         <Route path="/" element={<Home />}/>
         <Route path="register" element={<RegisterUser register={register} />}/>
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-        <Route path="logout" element={<LogoutUser logoutUser={logoutUser} />}/>
+        <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
-        <Route path="/places/:id" element={<PlaceView />}/>
-        <Route path="places/add" element={<AddPlace addplaces={addPlace} places={places}/>}/>
+        <Route path="places/:id" element={<PlaceView />}/>
+        <Route path="places/add" element={<AddPlace loginUser={loginUser} addplaces={addPlace} places={places}/>}/>
         
         {/* not mandatory to put a "/" at the beginning of a route */}
         

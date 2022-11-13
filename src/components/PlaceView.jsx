@@ -32,14 +32,14 @@ const PlaceView = (props) => {
 
     return(
         <>
+            <img src={place.imageURL} alt=''></img>
+            <h1>Name: {place.name}</h1>
+            <h2>Location: {place.location}</h2>
+            <h2>Rating: {place.rating}</h2>
+            <h2>Likes: {place.likes}</h2>
+            <h2>Comments: {place.comments}</h2>
             
-            <h1>{place.name}</h1>
-            <h2>{place.location}</h2>
-            <h2>{place.rating}</h2>
-            <h2>{place.likes}</h2>
-            <h2>{place.comments}</h2>
-            <h2>{place.imageURL}</h2>
-            <h2>{place.private}</h2>
+            <h2>Private: {place.private}</h2>
         </>
     )
 }

@@ -8,17 +8,20 @@ export default function NavBar() {
     }
    
     return(
-        <nav>
-          <Link to="/">HOME</Link><br/>
-          {/* NavLink comes with a bool called 'isActive'. True when clicked, false when not clicked */}
-          <NavLink to="register" style={({isActive})=> isActive ? activeStyle : undefined }>REGISTER</NavLink>
-          <br/>
-          <NavLink to="login" style={({isActive})=>isActive ? activeStyle : undefined }>LOGIN</NavLink>
-          <br/>
-          <NavLink to="places" style={({isActive})=>isActive ? activeStyle : undefined }>SEE ALL PLACES</NavLink>
-          <br/>
-          <NavLink to="logout" style={({isActive})=>isActive ? activeStyle : undefined }>LOGOUT</NavLink>
-          <br/>
+        <nav class="navbar navbar-dark bg-dark">
+            
+                <button class="btn btn-outline-success" type="button"><Link to="/">Burger and Beers</Link></button>
+                {/* NavLink comes with a bool called 'isActive'. True when clicked, false when not clicked */}
+
+                <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="register">REGISTER</NavLink></button>
+                
+                <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="login">LOGIN</NavLink></button>
+              
+                <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="places">SEE ALL PLACES</NavLink></button>
+                
+                <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="logout">LOGOUT</NavLink></button>
+                
+           
         </nav>
     )
 }

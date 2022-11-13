@@ -13,27 +13,33 @@ const PlacesContainer = (props) =>{
       <>
         <h2> Places List </h2>
         <Button variant='primary' onClick={()=>{navigate('add')}}>Add Place</Button>
-        < CardGroup>
+        <Row xs={1} md={3} className="g-4">
+          
             { props.places.map((place, i) => {
                 return (
-                  
+                  <Col>
                   <Card key={place.id} style={{ width: '18rem'}}>
-                    <Card.Img variant="top" src={place.imageURL}/>
+                    <Card.Img variant="top" src={place.imageURL} style={{ height: '160px'}}/>
                     <Card.Body>
                       <Card.Title>{ place.name }</Card.Title>
+                      <Card.Text>
+                        Location: 
+                      </Card.Text>
                       <Card.Text>
                         {place.location}
                       </Card.Text>
                       <Card.Text>
-                      { place.comments }
+                      Comments: { place.comments }
                       </Card.Text>
                       <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
                     </Card.Body>
                   </Card>
+                  </Col>
                 )
               })
             }
-            </CardGroup>
+          
+        </Row>
       </>
     )
 }
