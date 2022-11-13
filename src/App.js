@@ -8,6 +8,7 @@ import RegisterUser from './components/RegisterUser'
 import PlacesContainer from './components/PlacesContainer'
 import PlaceView from './components/PlaceView'
 import AddPlace from './components/AddPlace'
+import LogoutUser from './components/LogoutUser'
 
 let baseUrl = 'http://localhost:8000'
 
@@ -40,11 +41,10 @@ export default function App() {
     this.setPlaces({
       name: '',
       location: '',
-      rating: 0,
-      likes: 0,
+      rating: '',
       comments:'',
       imageURL:'',
-      private:false
+      private:''
     })
   }
 
@@ -70,8 +70,8 @@ export default function App() {
         credentials: "include"
       })
 
-      console.log(response)
-      console.log("BODY: ",response.body)
+      console.log(response)//Delete later
+      console.log("BODY: ",response.body)//Delete later
 
       if (response.status === 200) {
         getPlaces()
@@ -80,6 +80,7 @@ export default function App() {
     }
     catch (err) {
       console.log('Error => ', err);
+
     }
   }
 
@@ -103,7 +104,6 @@ export default function App() {
       console.log(response)
       if (response.status === 201) {
         console.log("worked register")
-        getPlaces()
         navigate("login")
       }
     }
@@ -111,6 +111,30 @@ export default function App() {
       console.log('Error => ', err);
     }
   }
+ 
+  const logoutUser=async(e)=>{
+    e.preventDefault();
+    const url = baseUrl +'/api/v1/user/logout'
+    
+    fetch(url, {
+        method:'GET',
+        headers:{}
+      })
+      .then(res => {
+        if(res.status === 200) {
+          return res.json()
+        } else {
+          return []
+        }
+      }).then(data => {
+        getPlaces()
+        navigate("places")
+        
+      })
+    }
+  
+    
+  
 
 
   useEffect(()=>{
@@ -124,10 +148,11 @@ export default function App() {
         <Route path="/" element={<Home />}/>
         <Route path="register" element={<RegisterUser register={register} />}/>
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-        <Route path="logout" element={<LoginUser loginUser={loginUser} />}/>
+        <Route path="logout" element={<LogoutUser logoutUser={logoutUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
         <Route path="/places/:id" element={<PlaceView />}/>
         <Route path="places/add" element={<AddPlace addplaces={addPlace} places={places}/>}/>
+        
         {/* not mandatory to put a "/" at the beginning of a route */}
         
       </Routes>     

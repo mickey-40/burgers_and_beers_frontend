@@ -1,11 +1,11 @@
 
 import {useNavigate} from 'react-router-dom'
-import {Button, Card} from 'react-bootstrap'
+import {Button, Card, Row, Col, CardGroup} from 'react-bootstrap'
 
 
 const PlacesContainer = (props) =>{
 
- 
+
 
     const navigate = useNavigate()
 
@@ -13,8 +13,10 @@ const PlacesContainer = (props) =>{
       <>
         <h2> Places List </h2>
         <Button variant='primary' onClick={()=>{navigate('add')}}>Add Place</Button>
+        < CardGroup>
             { props.places.map((place, i) => {
                 return (
+                  
                   <Card key={place.id} style={{ width: '18rem'}}>
                     <Card.Img variant="top" src={place.imageURL}/>
                     <Card.Body>
@@ -31,7 +33,7 @@ const PlacesContainer = (props) =>{
                 )
               })
             }
-          
+            </CardGroup>
       </>
     )
 }
