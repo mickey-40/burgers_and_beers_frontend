@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom'
 
 import {useParams} from 'react-router-dom';
 
-
+let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
     let [place, setPlace] = useState({});
     let {id} = useParams()
+    let navigate = useNavigate()
     
-    let baseUrl = 'http://localhost:8000'
 
     const getOnePlaceById = (id) => {
         // fetch to the backend
@@ -25,6 +26,26 @@ const PlaceView = (props) => {
           setPlace(data.data)
         })
       }
+      
+      const deletePlace = async(id) => {
+        console.log(id)
+       
+        try {
+          const deletePlace = await fetch(baseUrl + '/api/v1/places/' + id,{
+            method: "Delete",
+            credentials: "include"
+            
+          })
+            console.log(deletePlace)
+            // window.location = '/places'
+           
+          } catch (err){
+          console.log('Error ', err)
+        }
+        // navigate('/places')
+        
+    }
+      
 
       useEffect(()=>{
         getOnePlaceById(id)
@@ -40,6 +61,7 @@ const PlaceView = (props) => {
             <h2>Comments: {place.comments}</h2>
             
             <h2>Private: {place.private}</h2>
+            <button onClick={()=>{deletePlace(place.id)}}>Delete Place</button>
         </>
     )
 }

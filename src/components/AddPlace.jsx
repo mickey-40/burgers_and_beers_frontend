@@ -17,70 +17,41 @@ export default function AddPlace(props) {
 
 
 
-  // const handleNameChange = (event) => {
-  //   this.setName({
-  //     name: event.target.value,
-  //   })
-  // }
-
-  // const handleLocationChange = (event) => {
-  //   this.setState({
-  //     location: event.target.value,
-  //   })
-  // }
-
-  // const handleRatingChange = (event) => {
-  //   this.setState({
-  //     rating: event.target.value,
-  //   })
-  // }
-
-  // // handlelikesChange = (event) => {
-  // //   this.setState({
-  // //     likes: event.target.value,
-  // //   })
-  // // }
-
-  // const handleCommentsChange = (event) => {
-  //   this.setState({
-  //     comments: event.target.value, 
-  //   })
-  // }
-
-  // const handleImageURLChange = (event) => {
-  //   this.setState({
-  //     imageURL: event.target.value,
-  //   })
-  // }
-
-  // const handlePrivateChange = (event) => {
-  //   this.setState({
-  //     private: event.target.value,  
-  //   })
-  // }
-  const handleSubmit = (event) => {
+  
+  const handleSubmit = async (event) => {
     console.log(props)
+    event.preventDefault()
     
-    const places ={name,location,rating,likes,comments,imageURL,privateUse}
-    fetch(baseURL + '/api/v1/places/', {
-      method: 'POST',
-      credentials: "include",
-      body: JSON.stringify(places),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then (res => res.json())
-      .then (resJson => {
-       console.log('AddPlace - resJson', resJson)
-       navigate('places')
-        
-        
-        
-        
-    }).catch (error => console.error({'Error': error}))
+    try{
+      const places ={name,location,rating,likes,comments,imageURL,privateUse}
+      const response = await fetch(baseURL + '/api/v1/places/', {
+        method: 'POST',
+        credentials: "include",
+        body: JSON.stringify(places),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    })
+      console.log(response)
+      window.location = "/places"
+    } catch (err){
+      console.log('Error', err)
+    }
     
-   
   }
+  //   .then (res => res.json())
+  //     .then (resJson => {
+  //      console.log('AddPlace - resJson', resJson)
+       
+        
+        
+        
+        
+  //   }).catch (error => console.error({'Error': error}))
+    
+  //   navigate('/places')
+   
+  // }
   
   return (
     <>

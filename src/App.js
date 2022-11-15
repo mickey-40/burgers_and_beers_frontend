@@ -35,22 +35,10 @@ export default function App() {
       setPlaces(data.data)
     })
   }
-  const addPlace = (place) => {
-    const copyPlaces = [...this.places]
-    copyPlaces.unshift(place)
-    setPlaces({
-      name: '',
-      location: '',
-      rating: '',
-      comments:'',
-      imageURL:'',
-      private:''
-    })
-    navigate('places')
-    
-    
-    
-  }
+  
+
+  
+
 
   const loginUser = async (e) => {
     console.log('loginUser')
@@ -155,8 +143,8 @@ export default function App() {
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
-        <Route path="places/:id" element={<PlaceView />}/>
-        <Route path="places/add" element={<AddPlace loginUser={loginUser} addplaces={addPlace} places={places}/>}/>
+        <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} />}/>
+        <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
         
         {/* not mandatory to put a "/" at the beginning of a route */}
         
