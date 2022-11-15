@@ -27,24 +27,24 @@ const PlaceView = (props) => {
         })
       }
       
-      const deletePlace = async(id) => {
-        console.log(id)
-       
-        try {
-          const deletePlace = await fetch(baseUrl + '/api/v1/places/' + id,{
-            method: "Delete",
-            credentials: "include"
-            
-          })
-            console.log(deletePlace)
-            // window.location = '/places'
-           
-          } catch (err){
-          console.log('Error ', err)
-        }
-        // navigate('/places')
+    //   const deletePlace = async(id) => {
+    //     console.log(id)
         
-    }
+    //     try {
+    //       const deletePlace = await fetch(baseUrl + '/api/v1/places/' + id,{
+    //         method: "Delete",
+    //         credentials: "include"
+            
+    //       })
+    //         console.log(deletePlace)
+    //         // window.location = '/places'
+           
+    //       } catch (err){
+    //       console.log('Error ', err)
+    //     }
+    //     navigate('/places')
+        
+    // }
       
 
       useEffect(()=>{
@@ -61,7 +61,7 @@ const PlaceView = (props) => {
             <h2>Comments: {place.comments}</h2>
             
             <h2>Private: {place.private}</h2>
-            <button onClick={()=>{deletePlace(place.id)}}>Delete Place</button>
+            <button onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
         </>
     )
 }

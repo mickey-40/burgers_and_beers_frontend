@@ -126,6 +126,24 @@ export default function App() {
       })
     }
   
+    const deletePlace = async(id) => {
+      console.log(id)
+      
+      try {
+        const deletePlace = await fetch(baseUrl + '/api/v1/places/' + id,{
+          method: "Delete",
+          credentials: "include"
+          
+        })
+          console.log(deletePlace)
+          // window.location = '/places'
+         
+        } catch (err){
+        console.log('Error ', err)
+      }
+      window.location = '/places'
+      
+  }
     
   
 
@@ -143,7 +161,7 @@ export default function App() {
         <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
         <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
         <Route path="places" element={<PlacesContainer places={places} />}/>
-        <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} />}/>
+        <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}/>}/>
         <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
         
         {/* not mandatory to put a "/" at the beginning of a route */}
