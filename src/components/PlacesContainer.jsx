@@ -32,6 +32,7 @@ const PlacesContainer = (props) =>{
                       Comments: { place.comments }
                       </Card.Text>
                       <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
+                      {/* <Button variant="primary" onClick={()=>{navigate(`edit/${place.id}`)}}>Update Place</Button> */}
                     </Card.Body>
                   </Card>
                   </Col>

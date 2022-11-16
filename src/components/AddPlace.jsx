@@ -1,11 +1,11 @@
 import React, { useState } from "react"
-// import {Button, Col, Form, Row} from 'react-bootstrap'
+import {Button, Col, Form, Row} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 
 let baseURL = 'http://localhost:8000'
 
 export default function AddPlace(props) {
-  const navigate = useNavigate()
+  
 
   const [name, setName] = useState('')
   const [location, setLocation]= useState('')
@@ -39,73 +39,71 @@ export default function AddPlace(props) {
     }
     
   }
-  //   .then (res => res.json())
-  //     .then (resJson => {
-  //      console.log('AddPlace - resJson', resJson)
-       
-        
-        
-        
-        
-  //   }).catch (error => console.error({'Error': error}))
-    
-  //   navigate('/places')
-   
-  // }
+ 
   
   return (
     <>
       <h1>Add A New Place:</h1>
-      <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name of Place</label>
-            <input 
-              type="text"
-              id="name"
-              name="name"
-              onChange={(e)=> setName(e.target.value)}
-              /><br/>
-
-              <label htmlFor="location">Name of location</label>
-              <input 
+      <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formname">
+            <Form.Label >Name of Place</Form.Label>
+              <Form.Control 
                 type="text"
-                id="location"
+                
+                name="name"
+                onChange={(e)=> setName(e.target.value)}
+                /><br/>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formlocation">
+              <Form.Label >Name of location</Form.Label>
+              <Form.Control 
+                type="text"
+                
                 name="location"
                 onChange={(e)=> setLocation(e.target.value)}
                 value={location}
                 /><br/>
-
-              <label htmlFor="rating">Rating 1-5</label>
-              <input 
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formrating">
+              <Form.Label >Rating 1-5</Form.Label>
+              <Form.Control 
                 type="number"
-                id="rating"
+                
                 name="rating"
                 onChange={(e)=> setRating(e.target.value)}
                 /><br/>
-
-              <label htmlFor="comments">Comments</label>
-              <input 
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formcomments">
+              <Form.Label >Comments</Form.Label>
+              <Form.Control 
                 type="textarea"
-                id="comments"
+                
                 name="comments"
                 onChange={(e)=> setComments(e.target.value)}
                 /><br/>
-
-                <label htmlFor="imageURL">Restaurant or Brewery </label>
-                <select 
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formimageUrl">
+                <Form.Label >Restaurant or Brewery </Form.Label>
+                <Form.Select 
+                  id="disabledSelect" 
                   value={imageURL} 
                   onChange={(e)=> setImageURL(e.target.value)} 
                   >
                   <option value={'https://i.imgur.com/ehvIDCTl.jpg'}>Restaurant</option>
                   <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
                   
-                </select><br/>
-
-                <label htmlFor="private">Set to Private: </label>
-                <input 
-                value={privateUse} type="checkbox" 
-                onChange={(e)=> setPrivateUse(e.target.value)}/><br/>
-                <input type="submit" id="submit"  value="Add the Place"/>
-        </form>
+                </Form.Select><br/>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Check 
+                  value={privateUse} 
+                  label='Private'
+                  type="checkbox" 
+                  onChange={(e)=> setPrivateUse(e.target.value)}/><br/>
+                </Form.Group>
+                <Button type="submit">Add the Place</Button>
+                
+        </Form>
     </>
   );
   }

@@ -9,6 +9,7 @@ import PlacesContainer from './components/PlacesContainer'
 import PlaceView from './components/PlaceView'
 import AddPlace from './components/AddPlace'
 import LogoutUser from './components/LogoutUser'
+import UpdatePlace from './components/UpdatePlace'
 
 let baseUrl = 'http://localhost:8000'
 
@@ -125,7 +126,12 @@ export default function App() {
         
       })
     }
-  
+  //Update place function
+  const updatePlace = async(id)=>{
+    console.log(id)
+  }
+
+  //delete place function
     const deletePlace = async(id) => {
       console.log(id)
       
@@ -163,6 +169,7 @@ export default function App() {
         <Route path="places" element={<PlacesContainer places={places} />}/>
         <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}/>}/>
         <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
+        <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser} places={places} updatePlace={updatePlace}/>}/>
         
         {/* not mandatory to put a "/" at the beginning of a route */}
         
