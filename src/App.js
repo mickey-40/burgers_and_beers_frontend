@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
+// import { PlacesProvider } from './contexts/PlacesContexts';
 import {Route, Routes, useNavigate} from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
@@ -14,8 +15,9 @@ import UpdatePlace from './components/UpdatePlace'
 let baseUrl = 'http://localhost:8000'
 
 
-export default function App() {
+export default function App(props) {
   const [places, setPlaces] = useState([])
+  
   
   const navigate = useNavigate()
   
@@ -126,10 +128,7 @@ export default function App() {
         
       })
     }
-  //Update place function
-  const updatePlace = async(id)=>{
-    console.log(id)
-  }
+ 
 
   //delete place function
     const deletePlace = async(id) => {
@@ -150,8 +149,30 @@ export default function App() {
       window.location = '/places'
       
   }
+  // //Edit  
+  // const handleUpdate = async (id) => {
+  //   console.log("handleUpdate call", id)
     
-  
+    
+  //   try{
+  //     const places ={name,location,rating,likes,comments,imageURL,privateUse}
+  //     const response = await fetch(baseURL + '/api/v1/places/' + id, {
+  //       method: 'PUT',
+  //       credentials: "include",
+  //       body: JSON.stringify(places),
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       }
+  //   })
+  //     console.log(response)
+  //     window.location = "/places/"+id
+  //   } catch (err){
+  //     console.log('Error', err)
+  //   }
+    
+  // }
+    
+  // }
 
 
   useEffect(()=>{
@@ -159,21 +180,23 @@ export default function App() {
   },[])
 
   return (
-    <div className="App">
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="register" element={<RegisterUser register={register} />}/>
-        <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-        <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
-        <Route path="places" element={<PlacesContainer places={places} />}/>
-        <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}/>}/>
-        <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
-        <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser} places={places} updatePlace={updatePlace}/>}/>
-        
-        {/* not mandatory to put a "/" at the beginning of a route */}
-        
-      </Routes>     
-    </div>
+    // <PlacesProvider>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="register" element={<RegisterUser register={register} />}/>
+          <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
+          <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
+          <Route path="places" element={<PlacesContainer places={places} />}/>
+          <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
+          <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
+          <Route path='places/edit/:id' element={<UpdatePlace />}/>
+          
+          {/* not mandatory to put a "/" at the beginning of a route */}
+          
+        </Routes>     
+      </div>
+    // </PlacesProvider>
   );
 }

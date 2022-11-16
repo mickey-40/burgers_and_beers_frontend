@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import UpdatePlace from './UpdatePlace';
 
 
@@ -10,8 +10,9 @@ let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
     let [place, setPlace] = useState({});
     let {id} = useParams()
-    const navigate = useNavigate()
-    
+    // const navigate = useNavigate()
+    console.log('place - ', place)
+    console.log('id = ', id)
 
     const getOnePlaceById = (id) => {
         // fetch to the backend
@@ -48,9 +49,7 @@ const PlaceView = (props) => {
             
             <h2>Private: {place.private}</h2>
             <button onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
-            <div>
-              <UpdatePlace place={place}/>
-            </div>
+            <button><Link to={`/places/edit/${place.id}`}>Update</Link></button>
             
             
         </>
