@@ -149,30 +149,9 @@ export default function App(props) {
       window.location = '/places'
       
   }
-  // //Edit  
-  // const handleUpdate = async (id) => {
-  //   console.log("handleUpdate call", id)
+  
     
-    
-  //   try{
-  //     const places ={name,location,rating,likes,comments,imageURL,privateUse}
-  //     const response = await fetch(baseURL + '/api/v1/places/' + id, {
-  //       method: 'PUT',
-  //       credentials: "include",
-  //       body: JSON.stringify(places),
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //   })
-  //     console.log(response)
-  //     window.location = "/places/"+id
-  //   } catch (err){
-  //     console.log('Error', err)
-  //   }
-    
-  // }
-    
-  // }
+  
 
 
   useEffect(()=>{
@@ -191,7 +170,7 @@ export default function App(props) {
           <Route path="places" element={<PlacesContainer places={places} />}/>
           <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
           <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
-          <Route path='places/edit/:id' element={<UpdatePlace />}/>
+          <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser} places={places} />}/>
           
           {/* not mandatory to put a "/" at the beginning of a route */}
           

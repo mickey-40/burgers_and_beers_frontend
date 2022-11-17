@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate, Link} from "react-router-dom"
-import UpdatePlace from './UpdatePlace';
+import {useNavigate, useParams} from "react-router-dom"
+// import UpdatePlace from './UpdatePlace';
 
 
 
-import {useParams} from 'react-router-dom';
+
 
 let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
+    const navigate = useNavigate()
     let [place, setPlace] = useState({});
     let {id} = useParams()
     // const navigate = useNavigate()
@@ -49,7 +50,7 @@ const PlaceView = (props) => {
             
             <h2>Private: {place.private}</h2>
             <button onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
-            <button><Link to={`/places/edit/${place.id}`}>Update</Link></button>
+            <button variant='primary' onClick={()=>{navigate('/places/edit/'+place.id)}}>Update Place</button>
             
             
         </>

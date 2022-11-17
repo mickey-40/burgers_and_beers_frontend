@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import {Button, Col, Form, Row} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 
+
 let baseURL = 'http://localhost:8000'
 
 export default function AddPlace(props) {
@@ -85,11 +86,11 @@ export default function AddPlace(props) {
             <Form.Group className="mb-3" controlId="formimageUrl">
                 <Form.Label >Restaurant or Brewery </Form.Label>
                 <Form.Select 
-                  id="disabledSelect" 
+                  defaultValue='Restaurant' 
                   value={imageURL} 
                   onChange={(e)=> setImageURL(e.target.value)} 
                   >
-                  <option value={'https://i.imgur.com/ehvIDCTl.jpg'}>Restaurant</option>
+                  <option value={'https://i.imgur.com/HdCX3My.jpeg'}>Restaurant</option>
                   <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
                   
                 </Form.Select><br/>
