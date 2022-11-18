@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
  
  function RegisterUser(props) {
   return(
-    <Form onSubmit={props.loginUser}>
+    <Form onSubmit={props.register}>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" placeholder="Username" name="username"/>

@@ -99,7 +99,8 @@ export default function App(props) {
       console.log(response)
       if (response.status === 201) {
         console.log("worked register")
-        navigate("login")
+        window.location = '/login'
+        
       }
     }
     catch (err) {

@@ -2,36 +2,50 @@ import React, { useState, useEffect } from 'react';
 import {Button, Form} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 
-let baseURL = 'http://localhost:8000'
+let baseUrl = 'http://localhost:8000'
 
 function UpdatePlace(props) {
-  
+  let [place, setPlace] = useState({});
   let {id} = useParams()
-  console.log(props)
+  console.log(props.places)
   console.log(id)
+  console.log(place)
   // console.log('props' , places[id].name)
-  // console.log('place name', place.name)
+  console.log('place name', place.name)
 //   console.log('id ', id)
-  
-  const [name, setName] = useState(props.places[id].name)
-//   const [location, setLocation]= useState(props.places[id].location)
-//   const [rating, setRating]= useState(props.places[id].rating)
-//   const [likes, setLikes]= useState(props.places[id].likes)
-//   const [comments, setComments]= useState(props.places[id].comments)
-//   const [imageURL, setImageURL]= useState(props.places[id].imageURL)
-//   const [privateUse, setPrivateUse]= useState(props.places[id].privateUse)
-
  
-  
-// //Edit  
+  const [name, setName] = useState(place.name)
+  const [location, setLocation]= useState(place.location)
+  const [rating, setRating]= useState(place.rating)
+  const [likes, setLikes]= useState(place.likes)
+  const [comments, setComments]= useState(place.comments)
+  const [imageURL, setImageURL]= useState(place.imageURL)
+  const [privateUse, setPrivateUse]= useState(place.privateUse)
+  const getOnePlaceById = (id) => {
+    // fetch to the backend
+    fetch(baseUrl + "/api/v1/places/" + id,{
+      credentials: "include"
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    }).then(data => {
+      console.log(data.data)
+      setPlace(data.data)
+    })
+  }
+  // //Edit  
 const handleUpdate = async (event) => {
   event.preventDefault()
   console.log('handleUpdate', props)
   
   
   try{
-    const places ={name}
-    const response = await fetch(baseURL + '/api/v1/places/edit/'+ id, {
+    const places ={name, location, rating, likes, comments, imageURL, privateUse}
+    const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
       method: 'PUT',
       credentials: "include",
       body: JSON.stringify(places),
@@ -46,6 +60,15 @@ const handleUpdate = async (event) => {
   }
   
 }
+
+  
+
+  useEffect(()=>{
+    getOnePlaceById(id)
+  },[])
+ 
+  
+
   
 
   
@@ -57,11 +80,11 @@ const handleUpdate = async (event) => {
     <>
       <h1>Update Place:</h1>
       
-            <h1>Name: {name}</h1>
+            <h1>Name: {place.name}</h1>
             
       <Form onSubmit={handleUpdate}>
           <Form.Group className="mb-3" controlId="formname">
-            <Form.Label >Name of Place</Form.Label>
+            <Form.Label >Edit Name:{place.name}</Form.Label>
               <Form.Control 
                 type="text"
                 value={name}
@@ -69,8 +92,8 @@ const handleUpdate = async (event) => {
                 onChange={(e)=> setName(e.target.value)}
                 />
           </Form.Group>
-          {/* <Form.Group className="mb-3" controlId="formlocation">
-              <Form.Label >Name of location</Form.Label>
+          <Form.Group className="mb-3" controlId="formlocation">
+              <Form.Label >Edit Location:{place.location}</Form.Label>
               <Form.Control 
                 type="text"
                 value={location}
@@ -79,7 +102,7 @@ const handleUpdate = async (event) => {
                 /><br/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formrating">
-              <Form.Label >Rating 1-5</Form.Label>
+              <Form.Label >Edit Rating:{place.rating}</Form.Label>
               <Form.Control 
                 type="number"
                 value={rating}
@@ -88,7 +111,7 @@ const handleUpdate = async (event) => {
                 /><br/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formcomments">
-              <Form.Label >Comments</Form.Label>
+              <Form.Label >Edit Comments :{place.comments}</Form.Label>
               <Form.Control 
                 type="textarea"
                 value={comments}
@@ -97,7 +120,7 @@ const handleUpdate = async (event) => {
                 /><br/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formimageUrl">
-                <Form.Label >Restaurant or Brewery </Form.Label>
+                <Form.Label >Change image </Form.Label>
                 <Form.Select 
                   id="disabledSelect" 
                   value={imageURL}
@@ -115,7 +138,7 @@ const handleUpdate = async (event) => {
                   value={privateUse}
                   onChange={(e)=> setPrivateUse(e.target.value)}
                  /><br/>
-                </Form.Group> */}
+                </Form.Group>
                 <Button type="submit">Update Place</Button>
                
                 
