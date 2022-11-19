@@ -2,6 +2,7 @@
 import {useNavigate} from 'react-router-dom'
 import {Button, Card, Row, Col, CardGroup} from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
+import '../App.css';
 import "react-multi-carousel/lib/styles.css";
 
 import '../App.css';
@@ -55,8 +56,8 @@ const PlacesContainer = (props) =>{
         
             { props.places.map((place, i) => {
                 return (
-                  <div>
-                    <Card key={place.id} style={{ width: '18rem'}}>
+                  <div className='cardContainer'>
+                    <Card className='cardDiv' key={place.id} style={{ width: '18rem'}}>
                       <Card.Img variant="top" src={place.imageURL} style={{ height: '160px'}}/>
                       <Card.Body>
                         <Card.Title>{ place.name }</Card.Title>

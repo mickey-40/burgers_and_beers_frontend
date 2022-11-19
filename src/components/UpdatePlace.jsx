@@ -126,7 +126,8 @@ const handleUpdate = async (event) => {
                   value={imageURL}
                   onChange={(e)=> setImageURL(e.target.value)}
                   >
-                  <option value={'https://i.imgur.com/ehvIDCTl.jpeg'}>Restaurant</option>
+                  <option >Pick Restaurant or Brewery</option>
+                  <option value={'https://i.imgur.com/JMRxeyd.jpeg'}>Restaurant</option>
                   <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
                   
                 </Form.Select><br/>
