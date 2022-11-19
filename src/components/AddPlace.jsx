@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import {Button, Col, Form, Row} from 'react-bootstrap'
-import {useNavigate} from 'react-router-dom'
+import {Button, Form} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 let baseURL = 'http://localhost:8000'
@@ -11,10 +11,10 @@ export default function AddPlace(props) {
   const [name, setName] = useState('')
   const [location, setLocation]= useState('')
   const [rating, setRating]= useState(0)
-  const [likes, setLikes]= useState('0')
+  const [likes, setLikes]= useState(0)
   const [comments, setComments]= useState('')
   const [imageURL, setImageURL]= useState('')
-  const [privateUse, setPrivateUse]= useState(false)
+  
 
 
 
@@ -24,7 +24,7 @@ export default function AddPlace(props) {
     event.preventDefault()
     
     try{
-      const places ={name,location,rating,likes,comments,imageURL,privateUse}
+      const places ={name,location,rating,likes,comments,imageURL}
       const response = await fetch(baseURL + '/api/v1/places/', {
         method: 'POST',
         credentials: "include",
@@ -96,13 +96,6 @@ export default function AddPlace(props) {
                   
                 </Form.Select><br/>
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Check 
-                  value={privateUse} 
-                  label='Private'
-                  type="checkbox" 
-                  onChange={(e)=> setPrivateUse(e.target.value)}/><br/>
-                </Form.Group>
                 <Button type="submit">Add the Place</Button>
                 
         </Form>

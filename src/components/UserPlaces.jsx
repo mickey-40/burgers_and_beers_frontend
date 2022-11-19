@@ -1,6 +1,6 @@
 
 import {useNavigate} from 'react-router-dom'
-import {Button, Card, Row, Col, CardGroup} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
@@ -52,7 +52,7 @@ const UserPlaces = (props) =>{
     return (
       <>
         <h2> Places List </h2>
-        <Button variant='primary' onClick={()=>{navigate('add')}}>Add Place</Button>
+        <Button variant='primary' onClick={()=>{navigate('../places/add')}}>Add Place</Button>
         <Carousel responsive={responsive}>
         
             { props.myPlaces.map((place, i) => {
@@ -71,7 +71,7 @@ const UserPlaces = (props) =>{
                         <Card.Text>
                         Comments: { place.comments }
                         </Card.Text>
-                        <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
+                        <Button variant="primary" onClick={()=>{navigate(`/places/${place.id}`)}}>Show Place</Button>
                         {/* <Button variant="primary" onClick={()=>{navigate(`edit/${place.id}`)}}>Update Place</Button> */}
                       </Card.Body>
                     </Card>

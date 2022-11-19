@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom"
-// import UpdatePlace from './UpdatePlace';
+import { Image } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -41,17 +43,16 @@ const PlaceView = (props) => {
 
     return(
         <>
-            <img src={place.imageURL} alt=''></img>
+          <div className="bg-info">
+            <Image src={place.imageURL} className='rounded' alt='Place Image' width='30%' height='30%'></Image>
             <h1>Name: {place.name}</h1>
             <h2>Location: {place.location}</h2>
             <h2>Rating: {place.rating}</h2>
             <h2>Likes: {place.likes}</h2>
             <h2>Comments: {place.comments}</h2>
-            
-            <h2>Private: {place.private}</h2>
             <button onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
             <button variant='primary' onClick={()=>{navigate('/places/edit/'+place.id)}}>Update Place</button>
-            
+          </div>
             
         </>
     )

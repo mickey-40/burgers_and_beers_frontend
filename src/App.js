@@ -12,7 +12,8 @@ import AddPlace from './components/AddPlace'
 import LogoutUser from './components/LogoutUser'
 import UpdatePlace from './components/UpdatePlace'
 import UserPlaces from './components/UserPlaces';
-
+import Footer from './components/Footer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 let baseUrl = 'http://localhost:8000'
 
 
@@ -130,9 +131,9 @@ export default function App(props) {
   const logoutUser=async(e)=>{
     console.log('logout user')
     e.preventDefault();
-    const url = baseUrl +'/api/v1/user/logout'
     
-    fetch(url, {
+    
+    fetch(baseUrl +'/api/v1/user/logout', {
         method:'GET',
         headers:{}
       })
@@ -174,20 +175,23 @@ export default function App(props) {
   
 
 
+  
   useEffect(()=>{
     getMyPlaces()
+  },[])
+  useEffect(()=>{
     getAllPlaces()
   },[])
 
   return (
-    // <PlacesProvider>
+    
       <div className="App">
-        <NavBar />
+        <NavBar logoutUser={logoutUser}/>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="register" element={<RegisterUser register={register} />}/>
           <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-          <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
+          {/* <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/> */}
           <Route path="places" element={<PlacesContainer places={places} />}/>
           <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
           <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
@@ -196,8 +200,9 @@ export default function App(props) {
           
           {/* not mandatory to put a "/" at the beginning of a route */}
           
-        </Routes>     
+        </Routes>  
+        <Footer/>   
       </div>
-    // </PlacesProvider>
+    
   );
 }

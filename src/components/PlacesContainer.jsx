@@ -1,28 +1,14 @@
 
 import {useNavigate} from 'react-router-dom'
-import {Button, Card, Row, Col, CardGroup} from 'react-bootstrap'
+import {Button, Card} from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
 
 import '../App.css';
-// const responsive = {
-//   desktop: {
-//     breakpoint: { max: 3000, min: 1024 },
-//     items: 3,
-//     slidesToSlide: 3 // optional, default to 1.
-//   },
-//   tablet: {
-//     breakpoint: { max: 1024, min: 464 },
-//     items: 2,
-//     slidesToSlide: 2 // optional, default to 1.
-//   },
-//   mobile: {
-//     breakpoint: { max: 464, min: 0 },
-//     items: 1,
-//     slidesToSlide: 1 // optional, default to 1.
-//   }
-// };
+import { useState } from 'react';
+
+let baseURL = 'http://localhost:8000'
 
 const PlacesContainer = (props) =>{
   const responsive = {
@@ -44,14 +30,36 @@ const PlacesContainer = (props) =>{
       items: 1
     }
   };
-
-
-    const navigate = useNavigate()
+  const [likes,setLikes]=useState(0)
+  const navigate = useNavigate()
+  const handleLikes = async (place) => {
+    
+    console.log(place)
+    console.log(place.id)
+    
+    
+    try{
+      
+      const response = await fetch(baseURL + '/api/v1/places/edit/'+ place.id, {
+        method: 'PUT',
+        credentials: 'include',
+        body: JSON.stringify(setLikes(likes+1)),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    })
+      console.log(response)
+      
+    } catch (err){
+      console.log('Error', err)
+    }
+    
+  }
 
     return (
       <>
         <h2> Places List </h2>
-        <Button variant='primary' onClick={()=>{navigate('add')}}>Add Place</Button>
+        
         <Carousel responsive={responsive}>
         
             { props.places.map((place, i) => {
@@ -70,8 +78,11 @@ const PlacesContainer = (props) =>{
                         <Card.Text>
                         Comments: { place.comments }
                         </Card.Text>
+                        <Card.Text>
+                          Likes: {likes} 
+                        </Card.Text>
                         <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
-                        {/* <Button variant="primary" onClick={()=>{navigate(`edit/${place.id}`)}}>Update Place</Button> */}
+                        <Button variant='success' onClick={()=>handleLikes(place)}>Like</Button>
                       </Card.Body>
                     </Card>
                   </div>

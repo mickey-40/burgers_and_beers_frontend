@@ -17,10 +17,10 @@ function UpdatePlace(props) {
   const [name, setName] = useState(place.name)
   const [location, setLocation]= useState(place.location)
   const [rating, setRating]= useState(place.rating)
-  const [likes, setLikes]= useState(place.likes)
+  
   const [comments, setComments]= useState(place.comments)
   const [imageURL, setImageURL]= useState(place.imageURL)
-  const [privateUse, setPrivateUse]= useState(place.privateUse)
+  
   const getOnePlaceById = (id) => {
     // fetch to the backend
     fetch(baseUrl + "/api/v1/places/" + id,{
@@ -44,7 +44,7 @@ const handleUpdate = async (event) => {
   
   
   try{
-    const places ={name, location, rating, likes, comments, imageURL, privateUse}
+    const places ={name, location, rating, comments, imageURL}
     const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
       method: 'PUT',
       credentials: "include",
@@ -132,14 +132,6 @@ const handleUpdate = async (event) => {
                   
                 </Form.Select><br/>
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Check 
-                  label='Private'
-                  type="checkbox" 
-                  value={privateUse}
-                  onChange={(e)=> setPrivateUse(e.target.value)}
-                 /><br/>
-                </Form.Group>
                 <Button type="submit">Update Place</Button>
                
                 
