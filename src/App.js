@@ -11,18 +11,37 @@ import PlaceView from './components/PlaceView'
 import AddPlace from './components/AddPlace'
 import LogoutUser from './components/LogoutUser'
 import UpdatePlace from './components/UpdatePlace'
+import UserPlaces from './components/UserPlaces';
 
 let baseUrl = 'http://localhost:8000'
 
 
 export default function App(props) {
+  const [myPlaces, setMyPlaces] = useState([])
   const [places, setPlaces] = useState([])
   
   
   const navigate = useNavigate()
   
 
-  const getPlaces = () => {
+  const getMyPlaces = () => {
+    // fetch to the backend
+    fetch(baseUrl + "/api/v1/places/private",{
+      credentials: "include"
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    }).then(data => {
+      console.log(data.data)
+      setMyPlaces(data.data)
+    })
+  }
+  
+  const getAllPlaces =()=>{
     // fetch to the backend
     fetch(baseUrl + "/api/v1/places/",{
       credentials: "include"
@@ -38,7 +57,6 @@ export default function App(props) {
       setPlaces(data.data)
     })
   }
-  
 
   
 
@@ -69,8 +87,9 @@ export default function App(props) {
       console.log("BODY: ",response.body)//Delete later
 
       if (response.status === 200) {
-        getPlaces()
-        navigate("places")
+        getMyPlaces()
+        getAllPlaces()
+        navigate("/")
       }
     }
     catch (err) {
@@ -124,7 +143,7 @@ export default function App(props) {
           return []
         }
       }).then(data => {
-        setPlaces([])
+        setMyPlaces([])
         navigate("places")
         
       })
@@ -156,7 +175,8 @@ export default function App(props) {
 
 
   useEffect(()=>{
-    getPlaces()
+    getMyPlaces()
+    getAllPlaces()
   },[])
 
   return (
@@ -169,6 +189,7 @@ export default function App(props) {
           <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
           <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/>
           <Route path="places" element={<PlacesContainer places={places} />}/>
+          <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
           <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
           <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
           <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser} places={places} />}/>

@@ -16,6 +16,8 @@ export default function NavBar() {
                 <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="login">LOGIN</NavLink></button>
               
                 <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="places">SEE ALL PLACES</NavLink></button>
+
+                <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="places/private">SEE MY PLACES</NavLink></button>
                 
                 <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="logout">LOGOUT</NavLink></button>
                 
