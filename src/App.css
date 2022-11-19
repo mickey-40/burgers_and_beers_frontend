@@ -41,9 +41,9 @@
 }
 
 
-/* .cardDiv{
-  align-items: center;
-} */
+.hidden{
+  display: none;
+}
 
 @keyframes App-logo-spin {
   from {

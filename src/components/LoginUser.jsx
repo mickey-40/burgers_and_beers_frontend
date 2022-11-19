@@ -1,9 +1,12 @@
 import {Button, Form} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom'
+
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
  
  function LoginUser(props) {
+  const navigate = useNavigate()
   return(
     <Form onSubmit={props.loginUser}>
           <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -25,6 +28,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
           <Button variant="primary" type="submit">
             Submit
           </Button>
+          <button class="btn btn-sm btn-outline-success" onClick={()=>navigate('/register')} type="button">New Here? Register</button>
     </Form>
 
     

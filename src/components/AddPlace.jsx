@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import {Button, Form} from 'react-bootstrap'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -7,7 +8,7 @@ let baseURL = 'http://localhost:8000'
 
 export default function AddPlace(props) {
   
-
+  
   const [name, setName] = useState('')
   const [location, setLocation]= useState('')
   const [rating, setRating]= useState(0)

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 let baseUrl = 'http://localhost:8000'
 
 function UpdatePlace(props) {
   let [place, setPlace] = useState({});
   let {id} = useParams()
+  const navigate = useNavigate()
   console.log(props.places)
   console.log(id)
   console.log(place)
@@ -40,7 +41,7 @@ function UpdatePlace(props) {
   // //Edit  
 const handleUpdate = async (event) => {
   event.preventDefault()
-  console.log('handleUpdate', props)
+  
   
   
   try{
@@ -54,7 +55,7 @@ const handleUpdate = async (event) => {
       }
   })
     console.log(response)
-    window.location = "/places/" + id
+    navigate("../places/"+id)
   } catch (err){
     console.log('Error', err)
   }

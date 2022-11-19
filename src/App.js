@@ -9,10 +9,8 @@ import RegisterUser from './components/RegisterUser'
 import PlacesContainer from './components/PlacesContainer'
 import PlaceView from './components/PlaceView'
 import AddPlace from './components/AddPlace'
-import LogoutUser from './components/LogoutUser'
 import UpdatePlace from './components/UpdatePlace'
 import UserPlaces from './components/UserPlaces';
-import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 let baseUrl = 'http://localhost:8000'
 
@@ -20,6 +18,7 @@ let baseUrl = 'http://localhost:8000'
 export default function App(props) {
   const [myPlaces, setMyPlaces] = useState([])
   const [places, setPlaces] = useState([])
+  console.log(places)
   
   
   const navigate = useNavigate()
@@ -88,8 +87,9 @@ export default function App(props) {
       console.log("BODY: ",response.body)//Delete later
 
       if (response.status === 200) {
+        
         getMyPlaces()
-        getAllPlaces()
+        
         navigate("/")
       }
     }
@@ -145,6 +145,7 @@ export default function App(props) {
         }
       }).then(data => {
         setMyPlaces([])
+        
         navigate("places")
         
       })
@@ -196,12 +197,12 @@ export default function App(props) {
           <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
           <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
           <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
-          <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser} places={places} />}/>
+          <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
           
           {/* not mandatory to put a "/" at the beginning of a route */}
           
         </Routes>  
-        <Footer/>   
+        
       </div>
     
   );

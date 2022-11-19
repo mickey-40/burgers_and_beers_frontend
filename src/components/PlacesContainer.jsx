@@ -33,26 +33,26 @@ const PlacesContainer = (props) =>{
   const [likes,setLikes]=useState(0)
   const navigate = useNavigate()
   const handleLikes = async (place) => {
-    
     console.log(place)
-    console.log(place.id)
+
     
     
-    try{
-      
-      const response = await fetch(baseURL + '/api/v1/places/edit/'+ place.id, {
-        method: 'PUT',
-        credentials: 'include',
-        body: JSON.stringify(setLikes(likes+1)),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-    })
-      console.log(response)
-      
-    } catch (err){
-      console.log('Error', err)
-    }
+    
+    // try{
+    //   const places ={name, location, rating, comments, imageURL}
+    //   const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
+    //     method: 'PUT',
+    //     credentials: "include",
+    //     body: JSON.stringify(places),
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    // })
+    //   console.log(response)
+    //   window.location = "/places/"
+    // } catch (err){
+    //   console.log('Error', err)
+    // }
     
   }
 
@@ -79,10 +79,14 @@ const PlacesContainer = (props) =>{
                         Comments: { place.comments }
                         </Card.Text>
                         <Card.Text>
-                          Likes: {likes} 
+                        <button className='btn btn-outline-primary p-1'  onClick={()=>{
+                            handleLikes(place)
+                          }}>
+                            Like: 
+                        </button> {likes} 
                         </Card.Text>
-                        <Button variant="primary" onClick={()=>{navigate(`${place.id}`)}}>Show Place</Button>
-                        <Button variant='success' onClick={()=>handleLikes(place)}>Like</Button>
+                        
+                        
                       </Card.Body>
                     </Card>
                   </div>

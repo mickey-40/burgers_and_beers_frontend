@@ -57,7 +57,7 @@ const UserPlaces = (props) =>{
         
             { props.myPlaces.map((place, i) => {
                 return (
-                  <div className='cardContainer'>
+                  <div onClick={()=>{navigate(`/places/${place.id}`)}} className='cardContainer'>
                     <Card className='cardDiv' key={place.id} style={{ width: '18rem'}}>
                       <Card.Img variant="top" src={place.imageURL} style={{ height: '160px'}}/>
                       <Card.Body>
@@ -71,7 +71,7 @@ const UserPlaces = (props) =>{
                         <Card.Text>
                         Comments: { place.comments }
                         </Card.Text>
-                        <Button variant="primary" onClick={()=>{navigate(`/places/${place.id}`)}}>Show Place</Button>
+                        {/* <Button variant="primary" onClick={()=>{navigate(`/places/${place.id}`)}}>Show Place</Button> */}
                         {/* <Button variant="primary" onClick={()=>{navigate(`edit/${place.id}`)}}>Update Place</Button> */}
                       </Card.Body>
                     </Card>
