@@ -5,12 +5,14 @@ import Carousel from 'react-multi-carousel';
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
 
-import '../App.css';
+
 import { useState } from 'react';
 
-let baseURL = 'http://localhost:8000'
+let baseUrl = 'http://localhost:8000'
 
 const PlacesContainer = (props) =>{
+  // const [likes, setLikes] = useState(0)
+  const [place, setPlace] = useState('')
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -30,29 +32,49 @@ const PlacesContainer = (props) =>{
       items: 1
     }
   };
-  const [likes,setLikes]=useState(0)
-  const navigate = useNavigate()
-  const handleLikes = async (place) => {
-    console.log(place)
+  // const getOnePlaceById = (id) => {
+  //   console.log(id)
+  //   // fetch to the backend
+  //   fetch(baseUrl + "/api/v1/places/" + id,{
+  //     credentials: "include"
+  //   })
+  //   .then(res => {
+  //     if(res.status === 200) {
+  //       return res.json()
+  //     } else {
+  //       return []
+  //     }
+  //   }).then(data => {
+  //     console.log(data.data)
+  //     setPlace(data.data)
+  //     console.log('log place', place)
+  //     handleLikes(place)
+  //   })
+  // }
+  
+  const handleLikes = async (id, likes) => {
+    console.log('handleLikes function data '+ id + ' '+ likes)
+    likes = likes + 1
+    console.log('likes ' + likes)
+    // console.log('place likes', place.likes)
+  
+    // setLikes(place.likes+1)
 
-    
-    
-    
-    // try{
-    //   const places ={name, location, rating, comments, imageURL}
-    //   const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
-    //     method: 'PUT',
-    //     credentials: "include",
-    //     body: JSON.stringify(places),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    // })
-    //   console.log(response)
-    //   window.location = "/places/"
-    // } catch (err){
-    //   console.log('Error', err)
-    // }
+    try{
+        const places = {likes}
+      const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
+        method: 'PUT',
+        credentials: "include",
+        body: JSON.stringify(places),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    })
+      console.log(response)
+      window.location = "/places"
+    } catch (err){
+      console.log('Error', err)
+    }
     
   }
 
@@ -80,10 +102,10 @@ const PlacesContainer = (props) =>{
                         </Card.Text>
                         <Card.Text>
                         <button className='btn btn-outline-primary p-1'  onClick={()=>{
-                            handleLikes(place)
+                            handleLikes(place.id, place.likes)
                           }}>
                             Like: 
-                        </button> {likes} 
+                        </button> {place.likes} 
                         </Card.Text>
                         
                         
