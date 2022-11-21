@@ -48,13 +48,17 @@ const PlaceView = (props) => {
               <button className='m-3 btn btn-primary' onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
               <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}>Update Place</button>
             </div>
-            <div>
-              <img src={place.imageURL} className='rounded mt-2' width={'30%'} hieght={'10%'} alt=""></img>
-              <h1>Name: {place.name}</h1>
-              <h2>Location: {place.location}</h2>
-              <h2>Rating: {place.rating}</h2>
-              <h2>Likes: {place.likes}</h2>
-              <h2>Comments: {place.comments}</h2>
+            <div className='row'>
+              <div className='col'>
+                <h1>Name: {place.name}</h1>
+                <h2>Location: {place.location}</h2>
+                <h2>Rating: {place.rating}</h2>
+                <h2>Likes: {place.likes}</h2>
+                <h2>Comments: {place.comments}</h2>
+              </div>
+              <div className='col'>
+                <img src='https://i.imgur.com/KwMng4C.png' className='rounded mt-2' width={'60%'} hieght={'20%'} alt=""></img>
+              </div>
             </div>
           </div>
             

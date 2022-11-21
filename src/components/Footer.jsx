@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
-    <div class="p-4 bg-dark text-white text-center">
+    <footer className="footer">
       <p>Footer</p>
-    </div>
+    </footer>
   );
 }

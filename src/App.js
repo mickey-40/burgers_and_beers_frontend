@@ -11,6 +11,7 @@ import PlaceView from './components/PlaceView'
 import AddPlace from './components/AddPlace'
 import UpdatePlace from './components/UpdatePlace'
 import UserPlaces from './components/UserPlaces';
+import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 let baseUrl = 'http://localhost:8000'
 
@@ -185,24 +186,26 @@ export default function App(props) {
   },[])
 
   return (
-    
-      <div className="App">
-        <NavBar logoutUser={logoutUser}/>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="register" element={<RegisterUser register={register} />}/>
-          <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-          {/* <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/> */}
-          <Route path="places" element={<PlacesContainer places={places} />}/>
-          <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
-          <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
-          <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
-          <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
+      <div>
+        <div className="App">
+          <NavBar logoutUser={logoutUser}/>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="register" element={<RegisterUser register={register} />}/>
+            <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
+            {/* <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/> */}
+            <Route path="places" element={<PlacesContainer places={places} />}/>
+            <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
+            <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
+            <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
+            <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
+            
+            {/* not mandatory to put a "/" at the beginning of a route */}
+            
+          </Routes>  
           
-          {/* not mandatory to put a "/" at the beginning of a route */}
-          
-        </Routes>  
-        
+        </div>
+        <Footer/>
       </div>
     
   );
