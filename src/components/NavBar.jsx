@@ -6,7 +6,8 @@ import '../App.css'
 
 export default function NavBar(props) {
 
-    console.log(props)
+    console.log('props ', props)
+    console.log('props.user ', props.user)
    
     return(
         <>
@@ -15,15 +16,13 @@ export default function NavBar(props) {
                 
                     <button class="btn btn-outline-success" type="button"><Link to="/">Burger and Beers</Link></button>
                     
-                    <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="places">SEE ALL PLACES</NavLink></button>
-
-                    {/* <button class={props.isLoggedIn ? "hidden":"btn btn-sm btn-outline-success"} type="button"><NavLink to="register">REGISTER</NavLink></button> */}
+                    <button class="btn btn-outline-success" type="button"><NavLink to="places">SEE ALL PLACES</NavLink></button>
                     
-                    <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="login">LOGIN</NavLink></button>
+                    <button class={props.user ? "hidden": "btn btn-outline-success"} type="button"><NavLink to="login">LOGIN</NavLink></button>
 
-                    <button class="btn btn-sm btn-outline-success" type="button"><NavLink to="places/private">SEE MY PLACES</NavLink></button>
+                    <button class={props.user ? "btn btn-outline-success":"hidden" } type="button"><NavLink to="places/private">SEE MY PLACES</NavLink></button>
                     
-                    <button onClick={props.logoutUser} class="btn btn-sm btn-outline-success"  type="button">LOGOUT</button>
+                    <button onClick={props.logoutUser} class={props.user ? "btn btn-outline-success":"hidden" } type="button">LOGOUT</button>
                     
             
             </nav>

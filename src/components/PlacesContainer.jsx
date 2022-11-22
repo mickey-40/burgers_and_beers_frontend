@@ -1,6 +1,4 @@
-
-import {useNavigate} from 'react-router-dom'
-import {Button, Card} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
@@ -11,9 +9,10 @@ import { useState } from 'react';
 let baseUrl = 'http://localhost:8000'
 
 const PlacesContainer = (props) =>{
-  console.log('username props ', props.username)
-  // const [likes, setLikes] = useState(0)
-  const [place, setPlace] = useState('')
+  console.log('username props ', props)
+  const [place, setPlace] = useState({})
+  const [likes, setLikes] = useState(0)
+  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -33,46 +32,32 @@ const PlacesContainer = (props) =>{
       items: 1
     }
   };
-  // const getOnePlaceById = (id) => {
-  //   console.log(id)
-  //   // fetch to the backend
-  //   fetch(baseUrl + "/api/v1/places/" + id,{
-  //     credentials: "include"
-  //   })
-  //   .then(res => {
-  //     if(res.status === 200) {
-  //       return res.json()
-  //     } else {
-  //       return []
-  //     }
-  //   }).then(data => {
-  //     console.log(data.data)
-  //     setPlace(data.data)
-  //     console.log('log place', place)
-  //     handleLikes(place)
-  //   })
-  // }
   
-  const handleLikes = async (id, likes) => {
-    console.log('handleLikes function data '+ id + ' '+ likes)
-    likes = likes + 1
-    console.log('likes ' + likes)
-    // console.log('place likes', place.likes)
   
-    // setLikes(place.likes+1)
-
+  const handleLikes = async (place) => {
+    console.log('place ',place)
+    setLikes(place.likes + 1)
+    console.log(likes)
+    
     try{
-        const places = {likes}
-      const response = await fetch(baseUrl + '/api/v1/places/edit/'+ id, {
+       
+      const response = await fetch(baseUrl + '/api/v1/places/edit/'+ place.id, {
         method: 'PUT',
         credentials: "include",
-        body: JSON.stringify(places),
+        body: JSON.stringify({likes: + place.likes + 1}),
         headers: {
           'Content-Type': 'application/json'
         }
+       
     })
-      console.log(response)
-      window.location = "/places"
+      const results = await response.json()
+
+      console.log('results ', results)
+      setPlace(results)
+      window.location.reload()
+
+      // props.setPlaces(results)
+      // window.location = "/places"
     } catch (err){
       console.log('Error', err)
     }
@@ -103,7 +88,7 @@ const PlacesContainer = (props) =>{
                         </Card.Text>
                         <Card.Text>
                         <button className='btn btn-outline-primary p-1'  onClick={()=>{
-                            handleLikes(place.id, place.likes)
+                            handleLikes(place)
                           }}>
                             Like: 
                         </button> {place.likes} 

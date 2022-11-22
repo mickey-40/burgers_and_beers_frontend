@@ -19,7 +19,7 @@ let baseUrl = 'http://localhost:8000'
 export default function App(props) {
   const [myPlaces, setMyPlaces] = useState([])
   const [places, setPlaces] = useState([])
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(false)
   console.log(places)
   
   
@@ -164,7 +164,7 @@ export default function App(props) {
         }
       }).then(data => {
         setMyPlaces([])
-        setUser([])
+        setUser(false)
         
         
         navigate("places")
@@ -210,14 +210,13 @@ export default function App(props) {
   return (
       <div>
         <div className="App">
-          <NavBar logoutUser={logoutUser}/>
+          <NavBar user={user} logoutUser={logoutUser}/>
           <Routes>
             <Route path="/" element={<Home user={user}/>}/>
             <Route path="register" element={<RegisterUser register={register} />}/>
             <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-            {/* <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/> */}
-            <Route path="places" element={<PlacesContainer user={user} places={places} />}/>
-            <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
+            <Route path="places" element={<PlacesContainer user={user} places={places} setPlaces={setPlaces}/>}/>
+            <Route path="places/private" element={<UserPlaces user={user} myPlaces={myPlaces} />}/>
             <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
             <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
             <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
