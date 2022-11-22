@@ -11,6 +11,7 @@ import { useState } from 'react';
 let baseUrl = 'http://localhost:8000'
 
 const PlacesContainer = (props) =>{
+  console.log('username props ', props.username)
   // const [likes, setLikes] = useState(0)
   const [place, setPlace] = useState('')
   const responsive = {

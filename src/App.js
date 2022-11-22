@@ -19,6 +19,7 @@ let baseUrl = 'http://localhost:8000'
 export default function App(props) {
   const [myPlaces, setMyPlaces] = useState([])
   const [places, setPlaces] = useState([])
+  const [user, setUser] = useState([])
   console.log(places)
   
   
@@ -59,12 +60,28 @@ export default function App(props) {
     })
   }
 
-  
+  const getUser =()=>{
+    // fetch to the backend
+    fetch(baseUrl + "/api/v1/user/logged_in_user",{
+      credentials: "include"
+    })
+    .then(res => {
+      if(res.status === 200) {
+        return res.json()
+      } else {
+        return []
+      }
+    }).then(data => {
+      console.log(data.data)
+      setUser(data.data)
+      console.log(user)
+    })
+  }
 
 
   const loginUser = async (e) => {
     console.log('loginUser')
-    console.log(e.target.email.value)
+    console.log(e.target.username.value)
     e.preventDefault()
     const url = baseUrl + '/api/v1/user/login'
     const loginBody = {
@@ -90,7 +107,7 @@ export default function App(props) {
       if (response.status === 200) {
         
         getMyPlaces()
-        
+        getUser()
         navigate("/")
       }
     }
@@ -140,12 +157,15 @@ export default function App(props) {
       })
       .then(res => {
         if(res.status === 200) {
+          console.log('Logged out user ', res)
           return res.json()
         } else {
           return []
         }
       }).then(data => {
         setMyPlaces([])
+        setUser([])
+        
         
         navigate("places")
         
@@ -184,17 +204,19 @@ export default function App(props) {
   useEffect(()=>{
     getAllPlaces()
   },[])
-
+  useEffect(()=>{
+    getUser()
+  },[])
   return (
       <div>
         <div className="App">
           <NavBar logoutUser={logoutUser}/>
           <Routes>
-            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<Home user={user}/>}/>
             <Route path="register" element={<RegisterUser register={register} />}/>
             <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
             {/* <Route path="logout" element={<LogoutUser setPlaces={setPlaces} logoutUser={logoutUser} />}/> */}
-            <Route path="places" element={<PlacesContainer places={places} />}/>
+            <Route path="places" element={<PlacesContainer user={user} places={places} />}/>
             <Route path="places/private" element={<UserPlaces myPlaces={myPlaces} />}/>
             <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
             <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
@@ -205,7 +227,7 @@ export default function App(props) {
           </Routes>  
           
         </div>
-        <Footer/>
+        {/* <Footer/> */}
       </div>
     
   );
