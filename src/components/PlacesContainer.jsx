@@ -87,11 +87,16 @@ const PlacesContainer = (props) =>{
                         Comments: { place.comments }
                         </Card.Text>
                         <Card.Text>
-                        <button className='btn btn-outline-primary p-1'  onClick={()=>{
+                        {props.user ? 
+
+                          <button className='btn btn-outline-primary p-1'  onClick={()=>{
                             handleLikes(place)
                           }}>
                             Like: 
-                        </button> {place.likes} 
+                        </button>  :'Likes: ' 
+                        
+                        }
+                        {place.likes}
                         </Card.Text>
                         
                         

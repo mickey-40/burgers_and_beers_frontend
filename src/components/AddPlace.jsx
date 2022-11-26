@@ -35,7 +35,7 @@ export default function AddPlace(props) {
         }
     })
       console.log(response)
-      window.location = "/places"
+      window.location = "/places/private"
     } catch (err){
       console.log('Error', err)
     }
