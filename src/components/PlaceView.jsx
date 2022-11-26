@@ -44,10 +44,7 @@ const PlaceView = (props) => {
     return(
         <>
           <div className="container-fluid bg-info">
-            <div>
-              <button className='m-3 btn btn-primary' onClick={()=>{props.deletePlace(place.id)}}>Delete Place</button>
-              <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}>Update Place</button>
-            </div>
+            
             <div className='row'>
               <div className='col'>
                 <h1>Name: {place.name}</h1>
@@ -55,6 +52,10 @@ const PlaceView = (props) => {
                 <h2>Rating: {place.rating}</h2>
                 <h2>Likes: {place.likes}</h2>
                 <h2>Comments: {place.comments}</h2>
+                <div>
+                  <button className='m-3 btn btn-primary' onClick={()=>{props.deletePlace(place.id)}}><i class="fa-sharp fa-solid fa-trash"></i></button>
+                  <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                </div>
               </div>
               <div className='col'>
                 <img src='https://i.imgur.com/KwMng4C.png' className='rounded mt-2' width={'60%'} hieght={'20%'} alt=""></img>

@@ -1,7 +1,8 @@
-import {Card} from 'react-bootstrap'
+import {Card,Col, Row} from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
+
 
 
 import { useState } from 'react';
@@ -67,13 +68,12 @@ const PlacesContainer = (props) =>{
     return (
       <>
         <h2> Places List </h2>
-        
-        <Carousel responsive={responsive}>
-        
+          <div id="scroll">
+            <Row xs={2} lg={3}>
             { props.places.map((place, i) => {
                 return (
                   <div className='cardContainer'>
-                    <Card className='cardDiv' key={place.id} style={{ width: '18rem'}}>
+                    <Card as={Col} className='cardDiv' key={place.id} style={{ width: '18rem'}}>
                       <Card.Img variant="top" src={place.imageURL} style={{ height: '160px'}}/>
                       <Card.Body>
                         <Card.Title>{ place.name }</Card.Title>
@@ -88,15 +88,13 @@ const PlacesContainer = (props) =>{
                         </Card.Text>
                         <Card.Text>
                         {props.user ? 
-
-                          <button className='btn btn-outline-primary p-1'  onClick={()=>{
+                          
+                          <button className=''  onClick={()=>{
                             handleLikes(place)
-                          }}>
-                            Like: 
-                        </button>  :'Likes: ' 
+                          }}><i class="fa-solid fa-thumbs-up"></i></button>  :'Likes: ' 
                         
                         }
-                        {place.likes}
+                        &nbsp;&nbsp;{place.likes}
                         </Card.Text>
                         
                         
@@ -107,8 +105,8 @@ const PlacesContainer = (props) =>{
                 )
               })
             }
-          
-        </Carousel>
+        </Row>
+        </div>
       </>
     )
 }

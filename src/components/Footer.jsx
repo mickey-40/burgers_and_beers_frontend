@@ -3,8 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   return (
-    <footer className="footer">
-      <p>Footer</p>
+    <footer id="footer">
+      <div>
+          <span>Beers and Places </span>
+            <span>&copy; 2022 beersandplaces.</span>
+      </div>
+      
     </footer>
   );
 }

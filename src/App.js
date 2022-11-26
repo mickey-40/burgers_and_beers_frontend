@@ -226,7 +226,7 @@ export default function App(props) {
           </Routes>  
           
         </div>
-        {/* <Footer/> */}
+        <Footer/>
       </div>
     
   );

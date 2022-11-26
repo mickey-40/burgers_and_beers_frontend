@@ -1,7 +1,10 @@
 .App {
   text-align: center;
+  background-color: #D36B00;
 }
-
+*{
+  background-color: #D36B00;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -40,14 +43,15 @@
     position: relative;
 }
 
-.footer {
-  background-color: green;
-  border-top:2px solid red;
-  position: fixed;
+#footer {
+  background-color: #D36B00;
+  border-top:2px solid black;
   width: 100%;
-  bottom: 0;
+  height: 100%;
   color: white;
-  font-size: 25px;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 5px;
  }
 
 .hidden{
@@ -64,12 +68,12 @@
 }
 
 .btn {
-  background: #596a75;
-  background-image: -webkit-linear-gradient(top, #596a75, #2980b9);
-  background-image: -moz-linear-gradient(top, #596a75, #2980b9);
-  background-image: -ms-linear-gradient(top, #596a75, #2980b9);
-  background-image: -o-linear-gradient(top, #596a75, #2980b9);
-  background-image: linear-gradient(to bottom, #596a75, #2980b9);
+  background: #D36B00;
+  background-image: -webkit-linear-gradient(top, #D36B00, #42032C);
+  background-image: -moz-linear-gradient(top, #D36B00, #42032C);
+  background-image: -ms-linear-gradient(top, #D36B00, #42032C);
+  background-image: -o-linear-gradient(top, #D36B00, #42032C);
+  background-image: linear-gradient(to bottom, #D36B00, #42032C);
   -webkit-border-radius: 13;
   -moz-border-radius: 13;
   border-radius: 13px;
@@ -82,13 +86,64 @@
 }
 
 .btn:hover {
-  background: #fc633c;
-  background-image: -webkit-linear-gradient(top, #fc633c, #3498db);
-  background-image: -moz-linear-gradient(top, #fc633c, #3498db);
-  background-image: -ms-linear-gradient(top, #fc633c, #3498db);
-  background-image: -o-linear-gradient(top, #fc633c, #3498db);
-  background-image: linear-gradient(to bottom, #fc633c, #3498db);
+  background: #42032C;
+  background-image: -webkit-linear-gradient(top, #42032C, #D36B00);
+  background-image: -moz-linear-gradient(top, #42032C, #D36B00);
+  background-image: -ms-linear-gradient(top, #42032C, #D36B00);
+  background-image: -o-linear-gradient(top, #42032C, #D36B00);
+  background-image: linear-gradient(to bottom, #42032C, #D36B00);
   text-decoration: none;
+}
+
+.form {
+  border: black 5px solid;
+  width: 55%;
+  margin: auto;
+  padding: 3px;
+
+}
+
+.navbar{
+  background-color: #42032C;
+  border-bottom: 5px solid black
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav button {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav button:hover {
+  background-color: black;
+  color: #ddd;
+}
+.topnav button.active {
+  background-color: #E6D2AA;
+  color: white;
+}
+.topnav button.split {
+  float: right;
+  background-color: #333;
+  color: white;
+}
+
+.userform {
+  border: 5px solid black;
+  width: 50%;
+  margin: auto;
+}
+
+#scroll {
+  overflow: auto;
+  width: 80vw;
+  height: 60vh;
+  margin: auto;
 }
 @keyframes App-logo-spin {
   from {

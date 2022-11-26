@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Collapse} from 'react-bootstrap';
 import {useNavigate, useParams} from 'react-router-dom';
 
 let baseUrl = 'http://localhost:8000'
 
 function UpdatePlace(props) {
   let [place, setPlace] = useState({});
+  const [open, setOpen] = useState(false);
   let {id} = useParams()
   const navigate = useNavigate()
   console.log(props.places)
@@ -55,7 +56,8 @@ const handleUpdate = async (event) => {
       }
   })
     console.log(response)
-    navigate("../places/"+id)
+    window.location.reload(navigate("../places/"+id)) 
+    
   } catch (err){
     console.log('Error', err)
   }
@@ -85,13 +87,19 @@ const handleUpdate = async (event) => {
             
       <Form onSubmit={handleUpdate}>
           <Form.Group className="mb-3" controlId="formname">
-            <Form.Label >Edit Name:{place.name}</Form.Label>
+            <Form.Label 
+              onClick={() => setOpen(!open)}
+              aria-controls="example-collapse-text"
+              aria-expanded={open}>Edit Name:{place.name}
+            </Form.Label>
+            <Collapse  in={open}>
               <Form.Control 
                 type="text"
                 value={name}
                 name="name"
                 onChange={(e)=> setName(e.target.value)}
                 />
+            </Collapse>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formlocation">
               <Form.Label >Edit Location:{place.location}</Form.Label>

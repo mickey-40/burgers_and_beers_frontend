@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import {Button, Form} from 'react-bootstrap'
+import {Button, Form, Col, Row} from 'react-bootstrap'
+import '../App.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -46,58 +47,67 @@ export default function AddPlace(props) {
   return (
     <>
       <h1>Add A New Place:</h1>
-      <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formname">
-            <Form.Label >Name of Place</Form.Label>
+      <Form  className="form" onSubmit={handleSubmit}>
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formname">
+            <Form.Label as={Col} className="p-3">Name of Place</Form.Label>
+            <Col>
               <Form.Control 
                 type="text"
-                
+                className=""
                 name="name"
                 onChange={(e)=> setName(e.target.value)}
                 /><br/>
+            </Col>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formlocation">
-              <Form.Label >Name of location</Form.Label>
-              <Form.Control 
-                type="text"
-                
-                name="location"
-                onChange={(e)=> setLocation(e.target.value)}
-                value={location}
-                /><br/>
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formlocation">
+              <Form.Label as={Col} className="p-3">Name of location</Form.Label>
+              <Col>
+                <Form.Control 
+                  type="text"
+                  
+                  name="location"
+                  onChange={(e)=> setLocation(e.target.value)}
+                  value={location}
+                  /><br/>
+              </Col>  
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formrating">
-              <Form.Label >Rating 1-5</Form.Label>
-              <Form.Control 
-                type="number"
-                
-                name="rating"
-                onChange={(e)=> setRating(e.target.value)}
-                /><br/>
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formrating">
+              <Form.Label as={Col} className="p-3">Rating 1-5</Form.Label>
+              <Col>
+                <Form.Control 
+                  type="number"
+                  
+                  name="rating"
+                  onChange={(e)=> setRating(e.target.value)}
+                  /><br/>
+                </Col>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formcomments">
+            <Form.Group as={Row} className="mt-1 pb-2 w-100 mx-auto square border-bottom border-dark g-2" controlId="formcomments">
               <Form.Label >Comments</Form.Label>
               <Form.Control 
-                type="textarea"
-                
+                as="textarea"
+                className="w-75 mx-auto"
                 name="comments"
                 onChange={(e)=> setComments(e.target.value)}
                 /><br/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formimageUrl">
-                <Form.Label >Restaurant or Brewery </Form.Label>
-                <Form.Select 
-                  defaultValue='Restaurant' 
-                  value={imageURL} 
-                  onChange={(e)=> setImageURL(e.target.value)} 
-                  >
-                  <option >Pick Restaurant or Brewery</option>
-                  <option value={'https://i.imgur.com/JMRxeyd.jpeg'}>Restaurant</option>
-                  <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
-                  
-                </Form.Select><br/>
+            <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formimageUrl">
+                <Form.Label as={Col}>Restaurant or Brewery </Form.Label>
+                <Col>
+                  <Form.Select 
+                    
+                    className="w-75"
+                    defaultValue='Restaurant' 
+                    value={imageURL} 
+                    onChange={(e)=> setImageURL(e.target.value)} >
+                    <option >Pick Restaurant or Brewery</option>
+                    <option value={'https://i.imgur.com/JMRxeyd.jpeg'}>Restaurant</option>
+                    <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
+                    
+                  </Form.Select><br/>
+                </Col>
               </Form.Group>
-                <Button type="submit">Add the Place</Button>
+                <Button className=""type="submit">Add the Place</Button>
                 
         </Form>
     </>
