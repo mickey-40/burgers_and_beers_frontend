@@ -105,7 +105,7 @@ export default function App(props) {
       console.log("BODY: ",response.body)//Delete later
 
       if (response.status === 200) {
-        
+        getAllPlaces()
         getMyPlaces()
         getUser()
         navigate("/")

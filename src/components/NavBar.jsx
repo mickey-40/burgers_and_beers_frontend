@@ -16,11 +16,11 @@ export default function NavBar(props) {
                 
                     <button  className='topnav' type="button" onClick={()=>{navigate('/')}}>Home</button>
                     
-                    <button className="split" type="button" onClick={()=>{navigate('/places')}}>SEE ALL PLACES</button>
+                    <button className="split" type="button" onClick={()=>{navigate('/places')}}>ALL PLACES</button>
                     
                     <button className={props.user ? "hidden": "split"} onClick={()=>{navigate('/login')}}type="button">LOGIN</button>
 
-                    <button className={props.user ? "split":"hidden" } type="button" onClick={()=>{navigate('/places/private')}}>SEE MY PLACES</button>
+                    <button className={props.user ? "split":"hidden" } type="button" onClick={()=>{navigate('/places/private')}}>{props.user.username}'S PLACES</button>
                     
                     <button onClick={props.logoutUser} class={props.user ? "split":"hidden" } type="button">LOGOUT</button>
                     

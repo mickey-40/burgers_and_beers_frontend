@@ -74,13 +74,17 @@ export default function AddPlace(props) {
           <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formrating">
               <Form.Label as={Col} className="p-3">Rating 1-5</Form.Label>
               <Col>
-                <Form.Control 
-                  type="number"
-                  
-                  name="rating"
+                <Form.Select 
+                  className="w-25 mx-auto text-center"
                   onChange={(e)=> setRating(e.target.value)}
-                  /><br/>
-                </Col>
+                  >
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                </Form.Select>
+              </Col>
             </Form.Group>
             <Form.Group as={Row} className="mt-1 pb-2 w-100 mx-auto square border-bottom border-dark g-2" controlId="formcomments">
               <Form.Label >Comments</Form.Label>

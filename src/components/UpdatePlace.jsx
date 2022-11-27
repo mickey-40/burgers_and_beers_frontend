@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Form, Collapse} from 'react-bootstrap';
+import {Button, Form, Collapse, Row, Col} from 'react-bootstrap';
 import {useNavigate, useParams} from 'react-router-dom';
+import '../App.css'
 
 let baseUrl = 'http://localhost:8000'
 
 function UpdatePlace(props) {
   let [place, setPlace] = useState({});
-  const [open, setOpen] = useState(false);
+  const [openName, setOpenName] = useState(false);
+  const [openLocation, setOpenLocation]= useState(false)
+  const [openRating, setOpenRating]= useState(false)
+  
+  const [openComments, setOpenComments] = useState(false)
   let {id} = useParams()
   const navigate = useNavigate()
   console.log(props.places)
@@ -85,63 +90,100 @@ const handleUpdate = async (event) => {
       
             <h1>Name: {place.name}</h1>
             
-      <Form onSubmit={handleUpdate}>
-          <Form.Group className="mb-3" controlId="formname">
+      <Form className="form" onSubmit={handleUpdate}>
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formname">
             <Form.Label 
-              onClick={() => setOpen(!open)}
+              
+              onClick={() => setOpenName(!openName)}
               aria-controls="example-collapse-text"
-              aria-expanded={open}>Edit Name:{place.name}
+              aria-expanded={openName}>
+                Edit Name:{place.name}
             </Form.Label>
-            <Collapse  in={open}>
-              <Form.Control 
-                type="text"
-                value={name}
-                name="name"
-                onChange={(e)=> setName(e.target.value)}
-                />
-            </Collapse>
+           
+              <Collapse  in={openName}>
+                <Form.Control 
+                  type="text"
+                  value={name}
+                  name="name"
+                  className="w-75 mx-auto"
+                  onChange={(e)=> setName(e.target.value)}
+                  />
+              </Collapse>
+           
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formlocation">
-              <Form.Label >Edit Location:{place.location}</Form.Label>
-              <Form.Control 
-                type="text"
-                value={location}
-                name="location"
-                onChange={(e)=> setLocation(e.target.value)}
-                /><br/>
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formlocation">
+              <Form.Label 
+                onClick={() => setOpenLocation(!openLocation)}
+                aria-controls="example-collapse-text"
+                aria-expanded={openLocation}>
+                Edit Location:{place.location}
+              </Form.Label>
+              <Collapse  in={openLocation}>
+                <Form.Control 
+                  type="text"
+                  value={location}
+                  name="location"
+                  className="w-25 mx-auto"
+                  onChange={(e)=> setLocation(e.target.value)}
+                  />
+              </Collapse>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formrating">
-              <Form.Label >Edit Rating:{place.rating}</Form.Label>
-              <Form.Control 
-                type="number"
+          <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formrating">
+              <Form.Label className=''>
+                  Edit Rating:{place.rating}
+                </Form.Label>
+              
+              <Form.Select 
+                
                 value={rating}
-                name="rating"
+                
+                className="w-25 mx-auto text-center"
                 onChange={(e)=> setRating(e.target.value)}
-                /><br/>
+                >
+               
+                 
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                  
+             </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formcomments">
-              <Form.Label >Edit Comments :{place.comments}</Form.Label>
-              <Form.Control 
-                type="textarea"
-                value={comments}
-                name="comments"
-                onChange={(e)=> setComments(e.target.value)}
-                /><br/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formimageUrl">
-                <Form.Label >Change image </Form.Label>
+            <Form.Group as={Row} className="mt-1 w-100 mx-auto square border-bottom border-dark g-2" controlId="formimageUrl">
+                <Form.Label>
+                  Change image from {place.imageURL === 'https://i.imgur.com/JMRxeyd.jpeg' && <span>Resturant</span>}
+                  {place.imageURL === 'https://i.imgur.com/WmCiEbS.jpeg' && <span>Brewery</span>}
+                </Form.Label>
                 <Form.Select 
                   id="disabledSelect" 
                   value={imageURL}
                   onChange={(e)=> setImageURL(e.target.value)}
+                  className="w-25 mx-auto"
                   >
-                  <option >Pick Restaurant or Brewery</option>
-                  <option value={'https://i.imgur.com/JMRxeyd.jpeg'}>Restaurant</option>
-                  <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
+                    <option >Pick Restaurant or Brewery</option>
+                    <option value={'https://i.imgur.com/JMRxeyd.jpeg'}>Restaurant</option>
+                    <option value={'https://i.imgur.com/WmCiEbS.jpeg'}>Brewery</option>
                   
                 </Form.Select><br/>
               </Form.Group>
-                <Button type="submit">Update Place</Button>
+              <Form.Group as={Row} className="mt-1 p-2 w-100 mx-auto square border-bottom border-dark g-2" controlId="formcomments">
+              <Form.Label onClick={() => setOpenComments(!openComments)}
+                aria-controls="example-collapse-text"
+                aria-expanded={openComments}>
+                  Edit Comments :{place.comments}
+              </Form.Label>
+              <Collapse  in={openComments}>
+              <Form.Control 
+                as="textarea"
+                value={comments}
+                name="comments"
+                className="w-75 mx-auto"
+                onChange={(e)=> setComments(e.target.value)}
+                />
+              </Collapse>
+            </Form.Group>
+                <Button className="mt-3" type="submit">Update Place</Button>
                
                 
         </Form>

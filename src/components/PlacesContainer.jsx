@@ -67,7 +67,7 @@ const PlacesContainer = (props) =>{
 
     return (
       <>
-        <h2> Places List </h2>
+        <h2> All Places </h2>
           <div id="scroll">
             <Row xs={2} lg={3}>
             { props.places.map((place, i) => {

@@ -15,7 +15,7 @@ const UserPlaces = (props) =>{
 
     return (
       <>
-        <h2> Places List </h2>
+        <h2> {props.user.username}'s Places</h2>
         <Button variant='primary' onClick={()=>{navigate('../places/add')}}>Add Place</Button>
         <div id="scroll">
           <Row xs={2} lg={3}>
