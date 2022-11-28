@@ -50,7 +50,7 @@ const PlacesContainer = (props) =>{
       <>
         <h2> All Places </h2>
           <div id="scroll">
-            <Row xs={2} lg={3}>
+            <Row xs={2} lg={3} className="mx-auto">
             { props.places.map((place, i) => {
                 return (
                   <div className='cardContainer'>

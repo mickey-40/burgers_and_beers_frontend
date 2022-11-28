@@ -16,9 +16,9 @@ const UserPlaces = (props) =>{
     return (
       <>
         <h2> {props.user.username}'s Places</h2>
-        <Button variant='primary' onClick={()=>{navigate('../places/add')}}>Add Place</Button>
+        <Button variant='primary' onClick={()=>{navigate('../places/add')}}><i class="fa-solid fa-plus"></i></Button>
         <div id="scroll">
-          <Row xs={2} lg={3}>
+          <Row xs={2} lg={3} className="mx-auto">
             { props.myPlaces.map((place, i) => {
                 return (
                   <div onClick={()=>{navigate(`/places/${place.id}`)}} className='cardContainer'>
