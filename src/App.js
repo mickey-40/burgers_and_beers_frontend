@@ -169,7 +169,7 @@ export default function App(props) {
         setUser(false)
         
         
-        navigate("places")
+        navigate("/")
         
       })
     }
