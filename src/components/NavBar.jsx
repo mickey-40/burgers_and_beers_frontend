@@ -6,14 +6,17 @@ import '../App.css'
 
 export default function NavBar(props) {
     const navigate = useNavigate()
+    
     const [capName, setCapName]= useState('')
     const capitalName =()=>{
-        setCapName(props.user.username.toUpperCase())
-        console.log(capName)
+        if(props.user !== false){
+            setCapName(props.user.username.toUpperCase())
+        }
+        
     }
     useEffect(()=>{
         capitalName() 
-    },[])
+    })
    
     return(
         <div className='topnavbar'>

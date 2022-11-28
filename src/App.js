@@ -82,8 +82,7 @@ export default function App(props) {
 
 
   const loginUser = async (e) => {
-    console.log('loginUser')
-    console.log(e.target.username.value)
+    
     e.preventDefault()
     const url = baseUrl + '/api/v1/user/login'
     const loginBody = {

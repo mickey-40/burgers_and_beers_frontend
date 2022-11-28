@@ -1,21 +1,30 @@
-
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Button, Card, Row, Col} from 'react-bootstrap'
 
 import '../App.css';
-import "react-multi-carousel/lib/styles.css";
 
-import '../App.css';
+
+
 
 
 const UserPlaces = (props) =>{
-  console.log(props)
   
+  const [capFirstName, setCapFirstName]= useState('')
+    const capitalFirstLetterName =()=>{
+      if(props.user !== false){
+            setCapFirstName(props.user.username.charAt(0).toUpperCase()+ props.user.username.slice(1))
+        
+    }
+  }
+    useEffect(()=>{
+        capitalFirstLetterName() 
+    })
     const navigate = useNavigate()
 
     return (
       <>
-        <h2> {props.user.username}'s Places</h2>
+        <h2> {capFirstName}'s Places</h2>
         <Button variant='primary' onClick={()=>{navigate('../places/add')}}><i class="fa-solid fa-plus"></i></Button>
         <div id="scroll">
           <Row xs={2} lg={3} className="mx-auto">
