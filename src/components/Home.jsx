@@ -1,7 +1,7 @@
 
 
 export default function Home(props) {
-  console.log(props.user.username)
+  
   
   return (
     <>

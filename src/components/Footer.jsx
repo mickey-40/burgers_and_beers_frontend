@@ -5,8 +5,8 @@ export default function App() {
   return (
     <footer id="footer">
       <div>
-          <span>Beers and Places </span>
-            <span>&copy; 2022 beersandplaces.</span>
+          <span>Burgers and Beers </span>
+            <span>&copy; 2022 burgersandbeers.com</span>
       </div>
       
     </footer>

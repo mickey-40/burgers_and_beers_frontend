@@ -10,16 +10,16 @@ import { useState } from 'react';
 let baseUrl = 'http://localhost:8000'
 
 const PlacesContainer = (props) =>{
-  console.log('username props ', props)
+  
   const [place, setPlace] = useState({})
   const [likes, setLikes] = useState(0)
 
   
   
   const handleLikes = async (place) => {
-    console.log('place ',place)
+    
     setLikes(place.likes + 1)
-    console.log(likes)
+    
     
     try{
        
@@ -34,8 +34,9 @@ const PlacesContainer = (props) =>{
     })
       const results = await response.json()
 
-      console.log('results ', results)
+      
       setPlace(results)
+      
       window.location.reload()
 
       // props.setPlaces(results)
@@ -48,7 +49,7 @@ const PlacesContainer = (props) =>{
 
     return (
       <>
-        <h2> All Places </h2>
+        <h2 className='containerHeadline'> All Places </h2>
           <div id="scroll">
             <Row xs={2} lg={3} className="mx-auto">
             { props.places.map((place, i) => {
@@ -72,7 +73,7 @@ const PlacesContainer = (props) =>{
                           
                           <button className=''  onClick={()=>{
                             handleLikes(place)
-                          }}><i class="fa-solid fa-thumbs-up"></i></button>  :'Likes: ' 
+                          }}><i className="fa-solid fa-thumbs-up"></i></button>  :'Likes: ' 
                         
                         }
                         &nbsp;&nbsp;{place.likes}

@@ -20,7 +20,7 @@ export default function App(props) {
   const [myPlaces, setMyPlaces] = useState([])
   const [places, setPlaces] = useState([])
   const [user, setUser] = useState(false)
-  console.log(places)
+  
   
   
   const navigate = useNavigate()
@@ -38,7 +38,7 @@ export default function App(props) {
         return []
       }
     }).then(data => {
-      console.log(data.data)
+      
       setMyPlaces(data.data)
     })
   }
@@ -55,7 +55,7 @@ export default function App(props) {
         return []
       }
     }).then(data => {
-      console.log(data.data)
+      
       setPlaces(data.data)
     })
   }
@@ -72,9 +72,9 @@ export default function App(props) {
         return []
       }
     }).then(data => {
-      console.log(data.data)
+      
       setUser(data.data)
-      console.log(user)
+      
     })
   }
 
@@ -103,11 +103,10 @@ export default function App(props) {
         credentials: "include"
       })
 
-      console.log(response)//Delete later
-      console.log("BODY: ",response.body)//Delete later
+      
 
       if (response.status === 200) {
-        getAllPlaces()
+        // getAllPlaces()
         getMyPlaces()
         getUser()
         navigate("/")
@@ -154,12 +153,13 @@ export default function App(props) {
     
     
     fetch(baseUrl +'/api/v1/user/logout', {
+        credentials: "include",
         method:'GET',
         headers:{}
       })
       .then(res => {
         if(res.status === 200) {
-          console.log('Logged out user ', res)
+         
           return res.json()
         } else {
           return []
@@ -223,7 +223,7 @@ export default function App(props) {
             <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
             <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
             
-            {/* not mandatory to put a "/" at the beginning of a route */}
+          
             
           </Routes>  
           

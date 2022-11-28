@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import '../App.css'
 
@@ -6,12 +6,18 @@ import '../App.css'
 
 export default function NavBar(props) {
     const navigate = useNavigate()
-    console.log('props ', props)
-    console.log('props.user ', props.user)
+    const [capName, setCapName]= useState('')
+    const capitalName =()=>{
+        setCapName(props.user.username.toUpperCase())
+        console.log(capName)
+    }
+    useEffect(()=>{
+        capitalName() 
+    },[])
    
     return(
         <div className='topnavbar'>
-            <h1>Burgers and Beers</h1>
+            <h1 id='frontLogo'>Burgers and Beers</h1>
             <nav className='topnav'>
                 
                     <button  className='topnav' type="button" onClick={()=>{navigate('/')}}>Home</button>
@@ -20,9 +26,9 @@ export default function NavBar(props) {
                     
                     <button className={props.user ? "hidden": "split"} onClick={()=>{navigate('/login')}}type="button">LOGIN</button>
 
-                    <button className={props.user ? "split":"hidden" } type="button" onClick={()=>{navigate('/places/private')}}>{props.user.username}'S PLACES</button>
+                    <button className={props.user ? "split":"hidden" } type="button" onClick={()=>{navigate('/places/private')}}>{capName}'S PLACES</button>
                     
-                    <button onClick={props.logoutUser} class={props.user ? "split":"hidden" } type="button">LOGOUT</button>
+                    <button onClick={props.logoutUser} className={props.user ? "split":"hidden" } type="button">LOGOUT</button>
                     
             
             </nav>

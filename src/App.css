@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   background-color: #D36B00;
@@ -113,6 +114,7 @@
 .topnav {
   overflow: hidden;
   background-color: #333;
+  height: 15%;
 }
 .topnav button {
   float: left;
@@ -147,6 +149,17 @@
   width: 85vw;
   height: 60vh;
   margin: auto;
+}
+
+#frontLogo {
+  font-family: 'Bungee Spice', cursive;
+  background-color: #333;
+  margin-bottom: 0;
+}
+
+.containerHeadline{
+  font-family: 'Aref Ruqaa Ink', serif;
+  text-decoration: underline;
 }
 @keyframes App-logo-spin {
   from {
