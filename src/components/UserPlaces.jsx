@@ -1,7 +1,7 @@
 
 import {useNavigate} from 'react-router-dom'
 import {Button, Card, Row, Col} from 'react-bootstrap'
-import Carousel from 'react-multi-carousel';
+
 import '../App.css';
 import "react-multi-carousel/lib/styles.css";
 

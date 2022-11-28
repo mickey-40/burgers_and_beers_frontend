@@ -46,7 +46,7 @@ export default function App(props) {
   const getAllPlaces =()=>{
     // fetch to the backend
     fetch(baseUrl + "/api/v1/places/",{
-      credentials: "include"
+      
     })
     .then(res => {
       if(res.status === 200) {
@@ -77,6 +77,8 @@ export default function App(props) {
       console.log(user)
     })
   }
+
+  
 
 
   const loginUser = async (e) => {

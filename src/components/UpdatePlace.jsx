@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Form, Collapse, Row, Col} from 'react-bootstrap';
+import {Button, Form, Collapse, Row} from 'react-bootstrap';
 import {useNavigate, useParams} from 'react-router-dom';
 import '../App.css'
 
@@ -9,7 +9,7 @@ function UpdatePlace(props) {
   let [place, setPlace] = useState({});
   const [openName, setOpenName] = useState(false);
   const [openLocation, setOpenLocation]= useState(false)
-  const [openRating, setOpenRating]= useState(false)
+  
   
   const [openComments, setOpenComments] = useState(false)
   let {id} = useParams()
