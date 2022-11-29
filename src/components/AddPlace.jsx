@@ -5,8 +5,8 @@ import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-let baseURL = 'http://localhost:8000'
-
+// let baseURL = 'http://localhost:8000'
+let baseUrl = 'https://burgers-and-beers-backend.herokuapp.com/'
 export default function AddPlace(props) {
   
   
@@ -27,7 +27,7 @@ export default function AddPlace(props) {
     
     try{
       const places ={name,location,rating,likes,comments,imageURL}
-      const response = await fetch(baseURL + '/api/v1/places/', {
+      const response = await fetch(baseUrl + '/api/v1/places/', {
         method: 'POST',
         credentials: "include",
         body: JSON.stringify(places),

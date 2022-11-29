@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-
+// let baseUrl = 'https://burgers-and-beers-backend.herokuapp.com/'
 let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
     const navigate = useNavigate()
