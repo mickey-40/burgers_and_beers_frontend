@@ -53,8 +53,8 @@ const PlaceView = (props) => {
                 <h2>Likes: {place.likes}</h2>
                 <h2>Comments: {place.comments}</h2>
                 <div>
-                  <button className='m-3 btn btn-primary' onClick={()=>{props.deletePlace(place.id)}}><i class="fa-sharp fa-solid fa-trash"></i></button>
-                  <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                  <button className='m-3 btn btn-primary' onClick={()=>{props.deletePlace(place.id)}}><i className="fa-sharp fa-solid fa-trash"></i></button>
+                  <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}><i className="fa-sharp fa-solid fa-pen-to-square"></i></button>
                 </div>
               </div>
               <div className='col'>

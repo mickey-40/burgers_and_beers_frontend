@@ -25,7 +25,7 @@ const UserPlaces = (props) =>{
     return (
       <>
         <h2> {capFirstName}'s Places</h2>
-        <Button variant='primary' onClick={()=>{navigate('../places/add')}}><i class="fa-solid fa-plus"></i></Button>
+        <Button variant='primary' onClick={()=>{navigate('../places/add')}}><i className="fa-solid fa-plus"></i></Button>
         <div id="scroll">
           <Row xs={2} lg={3} className="mx-auto">
             { props.myPlaces.map((place, i) => {
