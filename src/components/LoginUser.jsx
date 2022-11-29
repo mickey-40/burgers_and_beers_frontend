@@ -40,7 +40,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
             <button  type="submit">
               Submit
             </button>
-            <button class="primary" onClick={()=>navigate('/register')} type="button">New Here? Register</button>
+            <button className="primary" onClick={()=>navigate('/register')} type="button">New Here? Register</button>
       </Form>
     </div>
     

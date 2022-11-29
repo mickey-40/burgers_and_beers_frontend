@@ -9,10 +9,10 @@ export default function NavBar(props) {
     
     const [capName, setCapName]= useState('')
     const capitalName =()=>{
-        console.log(props.user)
-        // if(props.user !== false || props.user !== undefined){
-        //     setCapName(props.user.username.toUpperCase())
-        // }
+        
+        if(props.user !== false ){
+            setCapName(props.user.username.toUpperCase())
+        }
         
     }
     useEffect(()=>{

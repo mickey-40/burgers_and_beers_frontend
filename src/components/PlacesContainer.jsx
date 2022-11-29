@@ -7,8 +7,8 @@ import "react-multi-carousel/lib/styles.css";
 
 import { useState } from 'react';
 
-// let baseUrl = 'http://localhost:8000'
-let baseUrl = process.env.REACT_APP_BACKEND_URL
+let baseUrl = 'http://localhost:8000'
+// let baseUrl = process.env.REACT_APP_BACKEND_URL
 const PlacesContainer = (props) =>{
   
   const [place, setPlace] = useState({})

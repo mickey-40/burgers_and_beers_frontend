@@ -7,8 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-let baseUrl = process.env.REACT_APP_BACKEND_URL
-// let baseUrl = 'http://localhost:8000'
+// let baseUrl = process.env.REACT_APP_BACKEND_URL
+let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
     const navigate = useNavigate()
     let [place, setPlace] = useState({});

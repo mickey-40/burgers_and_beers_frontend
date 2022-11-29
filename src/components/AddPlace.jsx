@@ -5,8 +5,8 @@ import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-// let baseUrl = 'http://localhost:8000'
-let baseUrl = process.env.REACT_APP_BACKEND_URL
+let baseUrl = 'http://localhost:8000'
+// let baseUrl = process.env.REACT_APP_BACKEND_URL
 export default function AddPlace(props) {
   
   
