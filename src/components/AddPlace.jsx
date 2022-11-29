@@ -5,8 +5,8 @@ import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-let baseUrl = 'http://localhost:8000'
-// let baseUrl = process.env.REACT_APP_BACKEND_URL
+let baseURL = 'http://localhost:8000'
+
 export default function AddPlace(props) {
   
   
@@ -27,7 +27,7 @@ export default function AddPlace(props) {
     
     try{
       const places ={name,location,rating,likes,comments,imageURL}
-      const response = await fetch(baseUrl + '/api/v1/places/', {
+      const response = await fetch(baseURL + '/api/v1/places/', {
         method: 'POST',
         credentials: "include",
         body: JSON.stringify(places),
@@ -117,5 +117,4 @@ export default function AddPlace(props) {
     </>
   );
   }
-
 

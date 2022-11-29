@@ -14,7 +14,6 @@ import UserPlaces from './components/UserPlaces';
 import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 let baseUrl = 'http://localhost:8000'
-// let baseUrl = process.env.REACT_APP_BACKEND_URL
 
 
 export default function App(props) {
@@ -85,7 +84,7 @@ export default function App(props) {
   const loginUser = async (e) => {
     
     e.preventDefault()
-    // const url = baseUrl + '/api/v1/user/login'
+    const url = baseUrl + '/api/v1/user/login'
     const loginBody = {
       
       email: e.target.email.value,
@@ -94,7 +93,7 @@ export default function App(props) {
     }
     try {
 
-      const response = await fetch(baseUrl + '/api/v1/user/login', {
+      const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(loginBody),
         headers: {
