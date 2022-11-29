@@ -109,6 +109,8 @@ export default function App(props) {
         getMyPlaces()
         getUser()
         navigate("/")
+      } else if (response.status === 401){
+        alert('User/Password Does Not Exist.')
       }
     }
     catch (err) {
@@ -190,7 +192,7 @@ export default function App(props) {
         } catch (err){
         console.log('Error ', err)
       }
-      window.location = '/places'
+      window.location = '/places/private'
       
   }
   
