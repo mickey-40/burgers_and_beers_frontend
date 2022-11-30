@@ -27,7 +27,7 @@ export default function NavBar(props) {
                     
                     <button className="split" type="button" onClick={()=>{navigate('/places')}}>ALL PLACES</button>
                     
-                    <button className={props.user ? "hidden": "split"} onClick={()=>{navigate('/login')}}type="button">LOGIN</button>
+                    <button className={props.user ? "hidden": "split"} onClick={()=>{navigate('/login')}}type="button">REGISTER/LOGIN</button>
 
                     <button className={props.user ? "split":"hidden" } type="button" onClick={()=>{navigate('/places/private')}}>{capName}'S PLACES</button>
                     
