@@ -38,7 +38,7 @@ const PlacesContainer = (props) =>{
       
       setPlace(results)
       
-      window.location.reload()
+      props.getAllPlaces()
 
       // props.setPlaces(results)
       // window.location = "/places"

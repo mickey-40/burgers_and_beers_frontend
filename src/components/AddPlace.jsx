@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import {useNavigate} from 'react-router-dom'
 import {Button, Form, Col, Row} from 'react-bootstrap'
 import '../App.css'
 
@@ -18,7 +19,7 @@ export default function AddPlace(props) {
   const [comments, setComments]= useState('')
   const [imageURL, setImageURL]= useState('')
   
-
+  const navigate = useNavigate()
 
 
   
@@ -37,7 +38,12 @@ export default function AddPlace(props) {
         }
     })
       console.log(response)
-      window.location = "/places/private"
+      const results = await response.json()
+      console.log(results)
+      props.getMyPlaces()
+      props.getAllPlaces()
+      navigate('../places/private')
+      // window.location = "/places/private"
     } catch (err){
       console.log('Error', err)
     }

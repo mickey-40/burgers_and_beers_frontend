@@ -207,15 +207,15 @@ export default function App(props) {
 
 
   
-  useEffect(()=>{
-    getMyPlaces()
-  },[])
+  // useEffect(()=>{
+  //   getMyPlaces()
+  // },[])
   useEffect(()=>{
     getAllPlaces()
   },[])
-  useEffect(()=>{
-    getUser()
-  },[])
+  // useEffect(()=>{
+  //   getUser()
+  // },[])
   return (
       <div>
         <div className="App">
@@ -224,11 +224,11 @@ export default function App(props) {
             <Route path="/" element={<Home user={user}/>}/>
             <Route path="register" element={<RegisterUser register={register} />}/>
             <Route path="login" element={<LoginUser loginUser={loginUser} />}/>
-            <Route path="places" element={<PlacesContainer user={user} places={places} setPlaces={setPlaces}/>}/>
+            <Route path="places" element={<PlacesContainer getAllPlaces={getAllPlaces} user={user} places={places} setPlaces={setPlaces}/>}/>
             <Route path="places/private" element={<UserPlaces user={user} myPlaces={myPlaces} />}/>
             <Route path="places/:id" element={<PlaceView  loginUser={loginUser} places={places} deletePlace={deletePlace}  />}/>
-            <Route path="places/add" element={<AddPlace loginUser={loginUser} places={places}/>}/>
-            <Route path='places/edit/:id' element={<UpdatePlace loginUser={loginUser}  />}/>
+            <Route path="places/add" element={<AddPlace getAllPlaces={getAllPlaces} getMyPlaces={getMyPlaces} loginUser={loginUser} places={places}/>}/>
+            <Route path='places/edit/:id'  element={<UpdatePlace loginUser={loginUser} getAllPlaces={getAllPlaces} />}/>
             
           
             

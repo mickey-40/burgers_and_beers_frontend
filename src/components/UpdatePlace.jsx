@@ -16,7 +16,7 @@ function UpdatePlace(props) {
   const [openComments, setOpenComments] = useState(false)
   let {id} = useParams()
   const navigate = useNavigate()
-  console.log(props.places)
+  console.log("props",props)
   console.log(id)
   console.log(place)
   // console.log('props' , places[id].name)
@@ -63,7 +63,8 @@ const handleUpdate = async (event) => {
       }
   })
     console.log(response)
-    window.location.reload(navigate("../places/"+id)) 
+    props.getAllPlaces()
+    navigate("../places/"+id)
     
   } catch (err){
     console.log('Error', err)
