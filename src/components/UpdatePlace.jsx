@@ -3,7 +3,9 @@ import {Button, Form, Collapse, Row} from 'react-bootstrap';
 import {useNavigate, useParams} from 'react-router-dom';
 import '../App.css'
 
-let baseUrl = 'http://localhost:8000'
+// let baseUrl = 'http://localhost:8000'
+// require('dotenv').config()
+let baseUrl = process.env.REACT_APP_BACKEND_URL
 
 function UpdatePlace(props) {
   let [place, setPlace] = useState({});

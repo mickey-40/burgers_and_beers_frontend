@@ -1,8 +1,8 @@
 {
   "name": "burgers_and_beers_frontend",
   "version": "0.1.0",
-  "engines":{
-    "node":"16.14.2"
+  "engines": {
+    "node": "16.14.2"
   },
   "private": true,
   "dependencies": {

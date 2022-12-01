@@ -1,3 +1,4 @@
+
 import './App.css';
 import React, { useState, useEffect } from 'react'
 // import { PlacesProvider } from './contexts/PlacesContexts';
@@ -13,7 +14,12 @@ import UpdatePlace from './components/UpdatePlace'
 import UserPlaces from './components/UserPlaces';
 import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
-let baseUrl = 'http://localhost:8000'
+// require('dotenv').config()
+
+// let baseUrl = 'http://localhost:8000'
+
+// console.log('process.env.REACT_APP_BACKEND_URL', process.env.REACT_APP_BACKEND_URL)
+let baseUrl = process.env.REACT_APP_BACKEND_URL
 
 
 export default function App(props) {
