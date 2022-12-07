@@ -198,7 +198,10 @@ export default function App(props) {
         } catch (err){
         console.log('Error ', err)
       }
-      window.location = '/places/private'
+      getMyPlaces()
+      getAllPlaces()
+      navigate("/places/private")
+      // window.location = '/places/private'
       
   }
   
