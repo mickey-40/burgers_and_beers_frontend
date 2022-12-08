@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom"
+import Geocode from "react-geocode";
 import Map from './Map'
 
 
@@ -17,9 +18,16 @@ const PlaceView = (props) => {
     const navigate = useNavigate()
     let [place, setPlace] = useState({});
     let {id} = useParams()
+    // console.log('place', place)
+    let [latitude, setLatitude] = useState()
+    let [longitude, setLongitude] = useState()
+    let [mapPlace, setMapPlace] = useState('')
+    // console.log('mapPlace', mapPlace)
+    // console.log('latitude', latitude)
+    // console.log('longitude', longitude)
     // const navigate = useNavigate()
-    console.log('place - ', place)
-    console.log('id = ', id)
+    // console.log('place - ', place)
+    // console.log('id = ', id)
 
     const getOnePlaceById = (id) => {
         // fetch to the backend
@@ -33,17 +41,41 @@ const PlaceView = (props) => {
             return []
           }
         }).then(data => {
-          console.log(data.data)
+          // console.log('data',data.data.location)
           setPlace(data.data)
+          setMapPlace(data.data.location)
+          
         })
       }
-      
+    const MapLocation = (location) => {
+      // console.log('MapLocation prop', location)
+      Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+      Geocode.setLocationType("ROOFTOP");
+      Geocode.enableDebug();
+
+      Geocode.fromAddress(location).then(
+        (response) => {
+          const { lat, lng } = response.results[0].geometry.location;
+          // console.log('lat,lng', lat, lng);
+          setLatitude(Number(lat))
+          setLongitude(Number(lng))
+          
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
     
-      
+     MapLocation(mapPlace) 
 
       useEffect(()=>{
         getOnePlaceById(id)
+        MapLocation(mapPlace)
       },[])
+      // useEffect(()=>{
+      //   MapLocation(mapPlace)
+      // },[])
 
     return(
         <>
@@ -62,7 +94,7 @@ const PlaceView = (props) => {
                 </div>
               </div>
               <div className='col .mapContainer'>
-                < Map location={place.location}/>
+                < Map latitude={latitude} longitude={longitude}/>
                 {/* <img src='https://i.imgur.com/3inQwHg.jpeg' className='rounded mt-2' width={'60%'} hieght={'20%'} alt=""></img> */}
               </div>
             </div>
