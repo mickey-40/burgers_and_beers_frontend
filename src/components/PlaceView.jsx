@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom"
+import Map from './Map'
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,6 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 let baseUrl = process.env.REACT_APP_BACKEND_URL
 // let baseUrl = 'http://localhost:8000'
 const PlaceView = (props) => {
+  
+
     const navigate = useNavigate()
     let [place, setPlace] = useState({});
     let {id} = useParams()
@@ -57,8 +61,9 @@ const PlaceView = (props) => {
                   <button className='m-3 btn btn-primary' onClick={()=>{navigate('/places/edit/'+place.id)}}><i className="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button>
                 </div>
               </div>
-              <div className='col'>
-                <img src='https://i.imgur.com/3inQwHg.jpeg' className='rounded mt-2' width={'60%'} hieght={'20%'} alt=""></img>
+              <div className='col .mapContainer'>
+                < Map location={place.location}/>
+                {/* <img src='https://i.imgur.com/3inQwHg.jpeg' className='rounded mt-2' width={'60%'} hieght={'20%'} alt=""></img> */}
               </div>
             </div>
           </div>

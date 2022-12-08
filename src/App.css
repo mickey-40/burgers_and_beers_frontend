@@ -1,11 +1,12 @@
 
 .App {
   text-align: center;
+  height: 95vh;
   background-color: #D36B00;
 }
-*{
+/* *{
   background-color: #D36B00;
-}
+} */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -48,12 +49,12 @@
   background-color: #D36B00;
   border-top:2px solid black;
   width: 100%;
-  height: 10%;
+  height: 5vh;
   color: white;
   font-size: 12px;
   text-align: center;
   padding-top: 5px;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   left: 0;
   bottom: 0;
  }
@@ -161,6 +162,12 @@
 .containerHeadline{
   font-family: 'Aref Ruqaa Ink', serif;
   text-decoration: underline;
+}
+
+.mapContainer{
+  width: 100%;
+  height: 50vh;
+  background-color: white;
 }
 @keyframes App-logo-spin {
   from {
