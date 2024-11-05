@@ -76,7 +76,7 @@ const handleUpdate = async (event) => {
 
   useEffect(()=>{
     getOnePlaceById(id)
-  },[])
+  },[id])
  
   
 

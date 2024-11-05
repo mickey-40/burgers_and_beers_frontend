@@ -15,7 +15,7 @@ export default function AddPlace(props) {
   const [name, setName] = useState('')
   const [location, setLocation]= useState('')
   const [rating, setRating]= useState(0)
-  const [likes, setLikes]= useState(0)
+  const [likes]= useState(0)
   const [comments, setComments]= useState('')
   const [imageURL, setImageURL]= useState('')
   

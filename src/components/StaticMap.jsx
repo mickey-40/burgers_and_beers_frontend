@@ -6,7 +6,7 @@ import '../App.css';
 export default function StaticMap(props){
   
 
-  let center = useMemo(()=> ({lat:props.latitude, lng:props.longitude}))
+  let center = useMemo(() => ({ lat: props.latitude, lng: props.longitude }), [props.latitude, props.longitude])
   
 
   return(

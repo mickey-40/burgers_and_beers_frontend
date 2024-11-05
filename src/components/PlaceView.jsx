@@ -72,7 +72,7 @@ const PlaceView = (props) => {
       useEffect(()=>{
         getOnePlaceById(id)
         MapLocation(mapPlace)
-      },[])
+      },[id,mapPlace])
       // useEffect(()=>{
       //   MapLocation(mapPlace)
       // },[])

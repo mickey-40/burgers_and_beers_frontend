@@ -12,8 +12,8 @@ import { useState } from 'react';
 let baseUrl = process.env.REACT_APP_BACKEND_URL
 const PlacesContainer = (props) =>{
   
-  const [place, setPlace] = useState({})
-  const [likes, setLikes] = useState(0)
+  const [setPlace] = useState({})
+  const [setLikes] = useState(0)
 
   
   
